@@ -191,12 +191,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             </div>
             <div class="session">
+                <img src="assets/Speaker_photos/ram prasath manohar.jpg" alt="Speaker Photo">
+                <div class="session-details">
+                    <h4>Dr. Ram Prasath Manohar V, IAS</h4>
+                    <p> IIT Madras, Chennai</p>
+                    
+                    <p class="session-time">9:50 - 10:05</p>
+                </div>
+            </div>
+            <div class="session">
                 <img src="assets/Speaker_photos/Dr. Sanjay Mathur.jpg" alt="Speaker Photo">
                 <div class="session-details">
                     <h4>Prof. Sanjay Mathur</h4>
                     <p>University of Cologne, Germany</p>
                     <p class="talk-title">Materials innovation for sustainable hydrogen production</p>
-                    <p class="session-time">9:50 - 10:05</p>
+                    <p class="session-time">10:10 - 10:25</p>
                 </div>
             </div>
             <div class="session">
@@ -205,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <h4>Dr. Navneet Kumar Gupta</h4>
                     <p> IISc, Bengaluru</p>
                     <p class="talk-title">From Waste to Wealth: Sustainable Materials and Renewable Energy Pathways</p>
-                    <p class="session-time">10:10 - 10:25</p>
+                    <p class="session-time">10:30 - 10:45</p>
                 </div>
             </div>
             <div class="session">
@@ -214,12 +223,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     <h4>Dr. Gesa Beck</h4>
                     <p> Berlin University of Applied Sciences, Germany</p>
                     <p class="talk-title">Material Flow Cost Accounting as a Resource-Saving Tool for Emerging Recycling Technologies</p>
-                    <p class="session-time">10:30 - 10:45</p>
+                    <p class="session-time">10:50 - 11:05</p>
                 </div>
             </div>
             <div class="session-break">
                 <i class="fa fa-coffee"></i> <span>Tea/Coffee Break</span>
-                <p>10:45 - 11:15 </p>
+                <p>11:05 - 11:20 </p>
             </div>
             <div class="session">
                 <img src="assets/Speaker_photos/Dr. Silke Christiansen.jpg" alt="Speaker Photo">
