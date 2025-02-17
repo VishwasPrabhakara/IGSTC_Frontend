@@ -34,7 +34,7 @@
 
         <div class="section" style="border-bottom: 2px solid #ddd; padding-bottom: 15px; margin-bottom: 15px;">
             <h3 style="color: #003366; font-size: 28px; font-weight: bold;">Profile</h3>
-            <h2 style="color: #555; font-size: 24px; margin: 5px 0;"><strong>Name:</strong> <span id="name"></span></p>
+            <h2 style="color: #555; font-size: 24px; margin: 5px 0;"><strong>Welcome , <span id="name"></span> </strong> </p>
             <p style="color: #555; font-size: 16px; margin: 5px 0;"><strong>Email:</strong> <span id="email"></span></p>
             <p style="color: #777; font-size: 18px; margin-bottom: 20px;"><strong>Designation:</strong> <span id="designation"></span></p>
         </div>
@@ -50,22 +50,22 @@
         <div class="section collapsible">
             <h3 onclick="toggleSection('travel')" style="cursor: pointer; background: #004080; color: white; padding: 12px; font-size: 18px; text-align: center; border-radius: 8px; font-weight: bold; margin-top: 10px;">Travel Details</h3>
             <div id="travel" class="content" style="display: none; padding: 15px; border: 1px solid #ddd; margin-top: 10px; border-radius: 5px;">
-                <label style="text-align: center;"><br>Arrival Date<br></label>
+                <label style="text-align: center; margin-bottom: 20px;"><br>Arrival Date<br></label>
                 <input type="date" id="arrival-date" placeholder="Arrival Date" style="width: 50%; padding: 10px; margin-bottom: 10px; border-radius: 5px; text-align: center; border: 1px solid #ccc;">
-                <label><br>Arrival Time<br></label>
+                <label style="text-align: center; margin-bottom: 20px;"><br>Arrival Time<br></label>
                 <input type="time" id="arrival-time" placeholder="Arrival Time" style="width: 50%; padding: 10px; margin-bottom: 10px; border-radius: 5px; text-align: center; border: 1px solid #ccc;">
-                <label><br>Departure Date<br></label>
+                <label style="text-align: center; margin-bottom: 20px;"><br>Departure Date<br></label>
                 <input type="date" id="departure-date" placeholder="Departure Date" style="width: 50%; padding: 10px; margin-bottom: 10px; border-radius: 5px;text-align: center; border: 1px solid #ccc;">
-                <label><br>Departure Time<br></label>
+                <label style="text-align: center; margin-bottom: 20px;"><br>Departure Time<br></label>
                 <input type="time" id="departure-time" placeholder="Departure Time" style="width: 50%; padding: 10px; margin-bottom: 10px; border-radius: 5px; text-align: center; border: 1px solid #ccc;">
-                <label><br>Duration Of Stay<br></label>
+                <label style="text-align: center; margin-bottom: 20px;"><br>Duration Of Stay<br></label>
                 <input type="number" id="days-stay" placeholder="Duration Of Stay" style="width: 50%; padding: 10px; margin-bottom: 10px; border-radius: 5px; text-align: center; border: 1px solid #ccc;"> Days
-                <label><br>Field Trip Participation:<br></label>
-                <select id="field-trip" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <label style="text-align: center; margin-bottom: 20px; "><br>Field Trip Participation:<br></label>
+                <select id="field-trip" style="width: 50%; padding: 10px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #ccc;">
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                 </select><br><br>
-                <button onclick="saveTravel()" style="width: 100%; padding: 12px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;"><br>Save</button>
+                <button onclick="saveTravel()" style="width: 50%; padding: 12px;  background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;"><br>Save</button>
             </div>
         </div>
 
