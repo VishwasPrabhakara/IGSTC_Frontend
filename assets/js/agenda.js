@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <img src="assets/Speaker_photos/ram prasath manohar.jpg" alt="Speaker Photo">
                 <div class="session-details">
                     <h4>Dr. Ram Prasath Manohar V, IAS</h4>
-                    <p> IIT Madras, Chennai</p>
+                    <p> BWWSB Chariman, Karnataka</p>
                     
                     <p class="session-time">9:50 - 10:05</p>
                 </div>
