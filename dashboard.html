@@ -50,16 +50,16 @@
         <div class="section collapsible">
             <h3 onclick="toggleSection('travel')" style="cursor: pointer; background: #004080; color: white; padding: 12px; font-size: 18px; text-align: center; border-radius: 8px; font-weight: bold; margin-top: 10px;">Travel Details</h3>
             <div id="travel" class="content" style="display: none; padding: 15px; border: 1px solid #ddd; margin-top: 10px; border-radius: 5px;">
-                <input type="date" id="arrival-date" placeholder="Arrival Date" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; text-align: center; border: 1px solid #ccc;">
-                <input type="time" id="arrival-time" placeholder="Arrival Time" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; text-align: center; border: 1px solid #ccc;">
-                <input type="date" id="departure-date" placeholder="Departure Date" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px;text-align: center; border: 1px solid #ccc;">
-                <input type="time" id="departure-time" placeholder="Departure Time" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; text-align: center; border: 1px solid #ccc;">
-                <input type="number" id="days-stay" placeholder="Number of Days Stay" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; text-align: center; border: 1px solid #ccc;">
+                <input type="date" id="arrival-date" placeholder="Arrival Date" style="width: 50%; padding: 10px; margin-bottom: 10px; border-radius: 5px; text-align: center; border: 1px solid #ccc;">
+                <input type="time" id="arrival-time" placeholder="Arrival Time" style="width: 50%; padding: 10px; margin-bottom: 10px; border-radius: 5px; text-align: center; border: 1px solid #ccc;">
+                <input type="date" id="departure-date" placeholder="Departure Date" style="width: 50%; padding: 10px; margin-bottom: 10px; border-radius: 5px;text-align: center; border: 1px solid #ccc;">
+                <input type="time" id="departure-time" placeholder="Departure Time" style="width: 50%; padding: 10px; margin-bottom: 10px; border-radius: 5px; text-align: center; border: 1px solid #ccc;">
+                <input type="number" id="days-stay" placeholder="Number of Days Stay" style="width: 50%; padding: 10px; margin-bottom: 10px; border-radius: 5px; text-align: center; border: 1px solid #ccc;">
                 <label><br>Field Trip Participation:</label>
                 <select id="field-trip" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
                     <option value="true">Yes</option>
                     <option value="false">No</option>
-                </select>
+                </select><br><br>
                 <button onclick="saveTravel()" style="width: 100%; padding: 12px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;">Save</button>
             </div>
         </div>
@@ -67,150 +67,167 @@
         <h3 onclick="toggleSection('documents')" style="cursor: pointer; background: #004080; color: white; padding: 12px; font-size: 18px; text-align: center; border-radius: 8px; font-weight: bold; margin-top: 10px;">Required Documents</h3>
         <div id="documents" style="display: none; padding: 15px; border: 1px solid #ddd; margin-top: 10px; border-radius: 5px;">
             
-            <label style="display: block; margin-top: 10px; font-size : 32px; font-weight:bold; text-align:center;" ><br><br>Photo:<br><br></label>
+            <label style="display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;"><br><br>Photo:<br><br></label>
             <input type="file" id="profile-pic">
-            <button style="background: linear-gradient(135deg, #004080, #0056b3); 
-            color: white; 
-            border: none; 
-            padding: 20px 20px; 
-            font-size: 12px; 
-            max-width: 200px;
-            border-radius: .8px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);" onclick="uploadFile('profile-pic', 'profile-picture')">Upload</button>
+            <button style="width: 35%;
+  padding: 12px;
+  background: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;" onclick="uploadFile('profile-pic', 'profile-picture')">Upload</button>
             <p id="profile-pic-status" style="color: red;"></p>
 
-            <label style="display: block; margin-top: 10px; font-size : 32px; font-weight:bold; text-align:center;" ><br><br>Flight Details:<br><br></label>
+            <label style="display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;""><br><br>Flight Details:<br><br></label>
             <input type="file" id="flight-details">
-            <button style="background: linear-gradient(135deg, #004080, #0056b3); 
-            color: white; 
-            border: none; 
-            padding: 12px 12px; 
-            font-size: 12px; 
-            max-width: 200px;
-            border-radius: .8px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);" onclick="uploadFile('flight-details', 'flight-details')">Upload</button>
+            <button style="width: 35%;
+  padding: 12px;
+  background: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;"onclick="uploadFile('flight-details', 'flight-details')">Upload</button>
             <p id="flight-details-status" style="color: red;"></p>
 
-            <label style="display: block; margin-top: 10px; font-size : 32px; font-weight:bold; text-align:center;" ><br><br>Flight Invoice (If Ticket Booked By Self):<br><br></label>
+            <label style="display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333; font-size:32px;"><br><br>Flight Invoice (If Ticket Booked By Self):<br><br></label>
             <input type="file" id="flight-invoice">
-            <button style="background: linear-gradient(135deg, #004080, #0056b3); 
-            color: white; 
-            border: none; 
-            padding: 12px 12px; 
-            font-size: 12px; 
-            max-width: 200px;
-            border-radius: .8px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);" onclick="uploadFile('flight-invoice', 'flight-invoice')">Upload</button>
+            <button style="width: 35%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;" onclick="uploadFile('flight-invoice', 'flight-invoice')">Upload</button>
             <p id="flight-invoice-status" style="color: red;"></p>
 
-            <label style="display: block; margin-top: 10px; font-size : 32px; font-weight:bold; text-align:center;" ><br><br>Visa Invoice:<br><br></label>
+            <label style="display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333; font-size:32px;"><br><br>Visa Invoice:<br><br></label>
             <input type="file" id="visa-invoice">
-            <button style="background: linear-gradient(135deg, #004080, #0056b3); 
-            color: white; 
-            border: none; 
-            padding: 12px 12px; 
-            font-size: 12px; 
-            max-width: 200px;
-            border-radius: .8px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);" onclick="uploadFile('visa-invoice', 'visa-invoice')">Upload</button>
+            <button style="width: 35%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;" onclick="uploadFile('visa-invoice', 'visa-invoice')">Upload</button>
             <p id="visa-invoice-status" style="color: red;"></p>
 
-            <label style="display: block; margin-top: 10px; font-size : 32px; font-weight:bold; text-align:center;" ><br><br>PPT:<br><br></label>
+            <label style="display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333; font-size:32px;"><br><br>PPT:<br><br></label>
             <input type="file" id="ppt">
-            <button style="background: linear-gradient(135deg, #004080, #0056b3); 
-            color: white; 
-            border: none; 
-            padding: 12px 12px; 
-            font-size: 12px; 
-            max-width: 200px;
-            border-radius: .8px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);" onclick="uploadFile('ppt', 'ppt')">Upload</button><br><br>
+            <button style="width: 35%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;" onclick="uploadFile('ppt', 'ppt')">Upload</button><br><br>
             <p id="ppt-status" style="color: red;"></p>
 
-            <label style="display: block; margin-top: 10px; font-size : 32px; font-weight:bold; text-align:center;" ><br><br>Boarding Pass:<br><br></label>
+            <label style="display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333; font-size:32px;"><br><br>Boarding Pass:<br><br></label>
             <input type="file" id="boarding-pass">
-            <button style="background: linear-gradient(135deg, #004080, #0056b3); 
-            color: white; 
-            border: none; 
-            padding: 12px 12px; 
-            font-size: 12px; 
-            max-width: 200px;
-            border-radius: .8px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);" onclick="uploadFile('boarding-pass', 'boarding-pass')">Upload</button>
+            <button style="width: 35%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;" onclick="uploadFile('boarding-pass', 'boarding-pass')">Upload</button>
             <p id="boarding-pass-status" style="color: red;"></p>
 
-            <label style="display: block; margin-top: 10px; font-size : 32px; font-weight:bold; text-align:center;" ><br><br>Bank Details:<br><br></label>
+            <label style="display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333; font-size:32px;"><br><br>Bank Details:<br><br></label>
             <input type="file" id="bank-details">
-            <button style="background: linear-gradient(135deg, #004080, #0056b3); 
-            color: white; 
-            border: none; 
-            padding: 12px 12px; 
-            font-size: 12px; 
-            max-width: 200px;
-            border-radius: .8px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);" onclick="uploadFile('bank-details', 'bank-details')">Upload</button>
+            <button style="width: 35%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;" onclick="uploadFile('bank-details', 'bank-details')">Upload</button>
             <p id="bank-details-status" style="color: red;"></p>
 
-            <label style="display: block; margin-top: 10px; font-size : 32px; font-weight:bold; text-align:center;" ><br><br>Local Expenses Bills:<br><br></label>
+            <label style="display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333; font-size:32px;"><br><br>Local Expenses Bills:<br><br></label>
             <input type="file" id="expenses-bills">
-            <button style="background: linear-gradient(135deg, #004080, #0056b3); 
-            color: white; 
-            border: none; 
-            padding: 12px 12px; 
-            font-size: 12px; 
-            max-width: 200px;
-            border-radius: .8px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);" onclick="uploadFile('expenses-bills', 'expenses-bills')">Upload</button>
+            <button style="width: 35%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;" onclick="uploadFile('expenses-bills', 'expenses-bills')">Upload</button>
             <p id="expenses-bills-status" style="color: red;"></p>
 
-            <label style="display: block; margin-top: 10px; font-size : 32px; font-weight:bold; text-align:center;" ><br><br>Required Document:<br><br></label>
-            <button style="background: linear-gradient(135deg, #004080, #0056b3); 
-            color: white; 
-            border: none; 
-            padding: 12px 12px; 
-            font-size: 12px; 
-            max-width: 200px;
-            border-radius: .8px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);"><a id="form-download" href="assets/document/foreign_certificate_(10_F_Form).docx" download style="color: #2980b9; display: block; margin-bottom: 10px;">Download Form</a></button>
+            <label style="display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333; font-size:32px;"><br><br>Required Document:<br><br></label>
+            <button style="width: 35%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;"><a id="form-download" href="assets/document/foreign_certificate_(10_F_Form).docx" download style="color: #2980b9; display: block; margin-bottom: 10px;">Download Form</a></button>
             <input type="file" id="form-upload">
-            <button style="background: linear-gradient(135deg, #004080, #0056b3); 
-            color: white; 
-            border: none; 
-            padding: 12px 12px; 
-            font-size: 12px; 
-            max-width: 200px;
-            border-radius: .8px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);" onclick="uploadFile('form-upload', 'required-form')">Upload</button>
+            <button style="width: 35%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;" onclick="uploadFile('form-upload', 'required-form')">Upload</button>
             <p id="form-upload-status" style="color: red;"></p>
 
         </div>
