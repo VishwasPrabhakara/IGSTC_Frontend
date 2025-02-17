@@ -1,0 +1,222 @@
+/* Global Styles */
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Hero Section */
+.agenda-hero {
+    
+    background-color: #555;
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.agenda-hero h1 {
+    font-size: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Agenda Container */
+.agenda-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: whitesmoke;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+
+
+/* Theme Block */
+.theme-block {
+    background: #eaf2ff;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;;
+    font-weight: bold;
+    height: 100px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.theme-block h4 {
+    color: #004080;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.theme-block h3 {
+    
+    
+    text-align: center;
+    margin-top: -5px;
+}
+
+/* Speaker Session Styling */
+.session {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    height: 130px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: left;
+    border-left: 5px solid #004080;
+}
+
+.roundtable{
+    height: 140px;
+}
+.session img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.session-details {
+    flex: 1;
+}
+
+.session-time {
+    font-weight: bold;
+    color: #ff6600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.session-details h4 {
+    color: #004080;
+    margin: 5px 0;
+    font-size: 1.2rem;
+}
+
+.talk-title {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Session Break */
+.session-break {
+    text-align: center;
+    padding: 15px;
+    background: #f4f4f4;
+    border-radius: 5px;
+    margin: 20px 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+}
+
+.break-content i {
+    color: #ff6600;
+    font-size: 1.8rem;
+}
+
+.break-content span {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    display: block;
+}
+
+/* Multiple Speakers in One Block */
+.group-session {
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    height: 280px;
+    text-align: center;
+    border-left: 5px solid #004080;
+}
+
+
+.speakers {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.speaker {
+    text-align: center;
+}
+
+.speaker img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.feild-trip{
+    height: 140px;
+}
+
+
+.speaker p {
+    font-size: 0.9rem;
+    color: #333;
+    margin: 0;
+}
+
+
+
+/* Tab Buttons */
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background: #0077b6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.tab-button:hover {
+    background: #005f8f;
+}
+
+.tab-button.active {
+    background: #023e8a;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none; /* Hide all tabs initially */
+}
+
+.tab-content.active {
+    display: block; /* Show only active tab */
+}
+
+.schedule-content {
+    text-align: left;
+    padding: 15px;
+}

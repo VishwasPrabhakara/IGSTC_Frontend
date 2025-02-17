@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | IGSTC Bi-Lateral Workshop 2025</title>
+
+    
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+   
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-left">
+            <a href="https://iisc.ac.in/" target="_blank"><img src="assets/logo/IISC_logo.png" alt="IISc"></a>
+            <a href="index.html"><img src="assets/logo/IGSTC_logo.png" alt="IGSTC"></a>
+            <a href="https://www.uni-koeln.de/en/" target="_blank"><img src="assets/logo/universityofcologne.png" alt="University Of Cologne "></a>
+        </div>
+        <nav class="header-right">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="invitees.html">Invitees</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Speaker Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Full Page Content -->
+    <div class="content-wrapper">
+
+        <!-- Hero Section -->
+        <div class="hero ">
+            <div class="hero-content fade-down">
+                <h1>IGSTC Bilateral-Workshop 2025</h1>
+                <p class="title">Inter-Disciplinary Approach to Sustainable Habitat Using AI-ML Tools:<br>
+                    Water & Wastewater Management, Air Quality, Energy Systems,<br> Material Selection,
+                    Agricultural Practices with Law and Policy</p>
+                    <p><i class="fa fa-calendar-days classy-icon"></i> Feb 24-26, 2025 |  <a  style="text-decoration: none; color: beige;" href="https://www.google.com/maps/place/Faculty+Hall,+Main+Building/@13.0169626,77.5646839" target="_blank"><i class="fa fa-map-marker"></i> IISC Bangalore</p>
+                <div class="buttons">
+                    <a href="speakers.html" class="btn">View Speakers</a>
+                    <a href="agenda.html" class="btn-secondary">View Agenda</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sponsors" style="background-color: cornsilk;">
+            <div class="sponsor-block1 fade-up">
+                <h4><br>Organized by<br></h4>
+                <a href="https://cst.iisc.ac.in/cst/"><img  src="assets/logo/CST_logo.png" alt="CST"></a>
+                <a href="https://iisc.ac.in/" target="_blank"><img src="assets/logo/IISc_logo.jpg" alt="CST"></a>
+                <span style="font-size: 14px; font-weight: bold;"><br>Centre for Sustainable Technologies (CST)</span><br>
+                        <span style="font-size: 14px; font-weight: bold;">Indian Institute of Science (IISC)</span><br>
+                        <span style="font-size: 12px; font-weight: lighter;">Prof. Lakshminarayana Rao | Dr. Kavita Verma & Team</span>
+            </div>
+            <div class="sponsor-block2 fade-up">
+                <h4><br>In Collaboration With<br></h4>
+                <a href="https://www.uni-koeln.de/en/" target="_blank"><img src="assets/logo/universityofcologne.png" alt="University Of Cologne "></a><br>
+                <p class="sponsor-text">
+                    <span style="font-size: 14px; font-weight: bold;">Faculty of Mathematics and Natural Sciences</span><br>
+                    <span style="font-size: 14px; font-weight: bold;">University of Cologne, Germany</span><br>
+                    <span style="font-size: 12px; font-weight: lighter;">Prof. Christina Bogner. | Prof. Sanjay Mathur | Dr. Thomas Fischer</span>
+                </p><br><br>
+            </div>
+        </div>
+       <!-- "Why Attend?" Button -->
+
+
+<!-- Sidebar Section -->
+        <!-- "Why Attend?" Floating Button -->
+<button class="why-attend-btn" onclick="toggleSidebar()">
+    <i class="fa fa-lightbulb"></i> Why Attend?
+</button>
+
+<!-- Sidebar Section -->
+<div id="whyAttendSidebar" class="sidebar">
+    <button class="close-btn" onclick="toggleSidebar()">✖</button>
+    <h2>Why Attend?</h2>
+    <div class="sidebar-content">
+        <div class="highlight-box">
+            <i class="fa fa-users icon"></i>
+            <p><strong>Renowned Speakers</strong></p>
+        </div>
+        <div class="highlight-box">
+            <i class="fa fa-globe icon"></i>
+            <p><strong>Global Experts</strong></p>
+        </div>
+        <div class="highlight-box">
+            <i class="fa fa-handshake icon"></i>
+            <p><strong>Networking</strong></p>
+        </div>
+        <div class="highlight-box">
+            <i class="fa fa-rocket icon"></i>
+            <p><strong>AI & Sustainability</strong></p>
+        </div><br><br>
+    </div>
+</div>
+
+
+
+        
+         <!-- Footer -->
+         <footer>
+            <p>&copy; 2025 IGSTC Conference | All rights reserved.</p>
+        </footer>
+    </div>
+    <script>
+    function toggleSidebar() {
+    const sidebar = document.getElementById("whyAttendSidebar");
+    sidebar.classList.toggle("active");
+}
+
+    
+   </script>
+
+</body>
+</html>

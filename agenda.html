@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda | IGSTC Bi Lateral Workshop 2025</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/agenda.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="header">
+        <div class="header-left">
+            <a href="https://iisc.ac.in/" target="_blank"><img src="assets/logo/IISC_logo.png" alt="IISc"></a>
+            <a href="index.html"><img src="assets/logo/IGSTC_logo.png" alt="IGSTC"></a>
+            <a href="https://www.uni-koeln.de/en/" target="_blank"><img src="assets/logo/universityofcologne.png" alt="University Of Cologne"></a>
+        </div>
+        <nav class="header-right">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="invitees.html">Invitees</a></li>
+                <li><a href="agenda.html" class="active">Agenda</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Speaker Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="agenda-hero">
+        <div class="hero-content">
+            <h1>Conference Agenda</h1>
+            <h2>Stay updated with the latest schedule for the event</h2>
+        </div>
+    </section>
+
+    <!-- Agenda Tabs -->
+    <div class="agenda-container">
+        <h2>Conference Schedule</h2>
+        <div class="tab-buttons">
+            <button class="tab-button active" data-target="day1">Day 1</button>
+            <button class="tab-button" data-target="day2">Day 2</button>
+            <button class="tab-button" data-target="day3">Day 3</button>
+        </div>
+
+        
+        <div id="schedule-content">
+            <!-- This will be dynamically loaded via JavaScript -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 IGSTC Conference | All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/agenda.js"></script>
+</body>
+</html>
