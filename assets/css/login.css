@@ -29,6 +29,14 @@ body {
     text-align: center;
     animation: fadeIn 0.8s ease-in-out;
 }
+.toggle-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    top: -45px;
+    left: 120px;
+    font-size: small;
+}
 
 @keyframes fadeIn {
     from {
