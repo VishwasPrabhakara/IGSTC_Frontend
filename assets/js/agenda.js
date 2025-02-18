@@ -348,7 +348,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         day3: `<h3 style="text-align: center;">Day 3 Schedule</h3>
             <div class="theme-block"><h4>Sustainable Cities and Communities<br></h4>
-                <h3><strong> Session Chair :</strong>  Prof. L. N> Rao</h3> 
+                <h3><strong> Session Chair :</strong>  Prof. L.N. Rao</h3> 
             </div>
             <div class="session">
                 <img src="assets/Speaker_photos/Dr. Verena Dlugoß.jpg" alt="Speaker Photo">
