@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                     <p class="session-time" style="text-align: center; margin-top: -80px;">10:05 - 10:25</p>
                 </div>
-            </div>
+            </div><br>
             <div class="session-break">
                 <i class="fa fa-coffee"></i> <span>Tea/Coffee Break</span>
                 <p>10:30 - 11:00</p>
@@ -318,22 +318,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p class="session-time">16:20-16:35</p>
                 </div>
             </div>
-            <div class="session">
-                <img src="assets/Speaker_photos/Dr. Shamita Kumar.jpg" alt="Speaker Photo">
-                <div class="session-details">
-                    <h4>Prof. Shamita Kumar</h4>
-                    <p> Bharati Vidyapeeth, Pune</p>
-                    <p class="talk-title">Crafting Sustainable Futures: The Role of Law and Policy in Driving Environmental Transition</p>
-                    <p class="session-time">16:40-16:55</p>
-                </div>
-            </div>
+            
             <div class="session">
                 <img src="assets/Speaker_photos/Dr. Ratheesh.jpg" alt="Speaker Photo">
                 <div class="session-details">
                     <h4>Dr. Ratheesh</h4>
                     <p> IIT Madras, Chennai</p>
                     <p class="talk-title">The Role of Law and Policies for Sustainable Future</p>
-                    <p class="session-time">17:00 - 17:15</p>
+                    <p class="session-time">16:40 - 16:55</p>
                 </div>
             </div>
             <div class="session">
@@ -342,7 +334,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <h4>Dr. D. Bhagawan</h4>
                     <p> Central University Of Rajasthan </p>
                     <p class="talk-title">Advanced Technology For Wastewater Treatment.</p>
-                    <p class="session-time">17:20 - 17:35</p>
+                    <p class="session-time">17:00 - 17:15</p>
                 </div>
             </div>
             <div class="theme-block roundtable"><h4>Roundtable Discussion<br></h4>
@@ -356,7 +348,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         day3: `<h3 style="text-align: center;">Day 3 Schedule</h3>
             <div class="theme-block"><h4>Sustainable Cities and Communities<br></h4>
-                <h3><strong> Session Chair :</strong>  Prof. Shamita Kumar</h3> 
+                <h3><strong> Session Chair :</strong>  Prof. L. N> Rao</h3> 
             </div>
             <div class="session">
                 <img src="assets/Speaker_photos/Dr. Verena Dlugoß.jpg" alt="Speaker Photo">
@@ -373,7 +365,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="speakers" style="align-items: center;">
                         <div class="speaker">
                             <img  src="assets/Speaker_photos/Ambika Banotra.jpg" alt="Speaker Photo">
-                            <h4><strong>Ambika Banotra</strong></h4><br>NRW.Global Business GmbH, Germany</p>
+                            <h4><strong>Ms. Ambika Banotra</strong></h4><br>NRW.Global Business GmbH, Germany</p>
                         </div>
                         <div class="speaker">
                             <img src="assets/Speaker_photos/Mr. Sakthikumar. R,.jpeg" alt="Speaker Photo">
@@ -403,9 +395,18 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p class="session-time">10:30 - 10:45</p>
                 </div>
             </div>
+            <div class="session">
+                <img src="assets/Speaker_photos/Dr. Shamita Kumar.jpg" alt="Speaker Photo">
+                <div class="session-details">
+                    <h4>Prof. Shamita Kumar</h4>
+                    <p> Bharati Vidyapeeth, Pune</p>
+                    <p class="talk-title">Crafting Sustainable Futures: The Role of Law and Policy in Driving Environmental Transition</p>
+                    <p class="session-time">10:50-11:05</p>
+                </div>
+            </div>
             <div class="session-break">
                 <i class="fa fa-coffee"></i> <span>Tea/Coffee Break</span>
-                <p>10:45 - 11:15 </p>
+                <p>11:05 - 11:25 </p>
             </div>
             <div class="theme-block roundtable"><h4>Roundtable Discussion<br></h4>
                 <h3><strong> Session Chair :</strong>  Prof. L.N. Rao and Prof. Christina Bogner</h3> 
