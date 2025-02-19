@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p class="session-time">9:30 - 10:00</p>
                 </div>
             </div>
-            <div style="height: 300px;" class="session">
+            <div style="height: 450px;" class="session">
                 <div  style="" class="session-details  ">
                     <h4 style="text-align: center;">Inaugural and presentation on other funding opportunities</h4>
                     
