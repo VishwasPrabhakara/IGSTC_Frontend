@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                     <p class="session-time" style="text-align: center; margin-top: -80px;">10:05 - 10:25</p>
                 </div>
-            </div><br>
+            </div>
             <div class="session-break">
                 <i class="fa fa-coffee"></i> <span>Tea/Coffee Break</span>
                 <p>10:30 - 11:00</p>
