@@ -15,7 +15,7 @@
     <meta property="og:image" content="https://igstcbilateralworkshop2025.in/assets/logo/IGSTC_logo.png">
     <meta property="og:url" content="https://igstcbilateralworkshop2025.in">
     <meta property="og:type" content="website">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Speakers | IGSTC Bi-Lateral Workshop 2025</title>
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
@@ -42,6 +42,7 @@
                 <li><a href="speakers.html" class="active">Speakers</a></li>
                 <li><a href="invitees.html">Invitees</a></li>
                 <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="venue.html">Venue</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="login.html">Speaker Login</a></li>
             </ul>
@@ -261,25 +262,27 @@
     </footer>
 
     <!-- Initialize AOS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
-        var swiper = new Swiper('.swiper-container', {
-            loop: true,
-            slidesPerView: 3,   // Shows 3 speakers at a time
-            spaceBetween: 20,   // Space between slides
-            autoplay: {
-                delay: 2500,    // Auto slide every 2.5 sec
-                disableOnInteraction: false,
-            },
-            
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                768: { slidesPerView: 2 },
-                480: { slidesPerView: 1 }
-            }
-        });
+       var swiper = new Swiper('.swiper-container', {
+        loop: true,
+        slidesPerView: 3,
+        spaceBetween: 20,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            768: { slidesPerView: 2 },
+            480: { slidesPerView: 1 }
+        }
+    });
+    
+    
     </script>
     
 </body>

@@ -97,19 +97,11 @@ body {
     color: #666;
 }
 
-/* --- Swiper Navigation Buttons --- */
-.swiper-button-next, .swiper-button-prev {
-    color: #003366;
-    transition: 0.3s;
+
+.speaker-card{
+    max-height: fit-content;
+    padding: 20px;;
 }
-
-.swiper-button-next:hover, .swiper-button-prev:hover {
-    color: #ff6600;
-}
-
-/* --- Swiper Pagination (Dots) --- */
-
-
 /* Make the whole card clickable */
 .swiper-slide.speaker-card {
     text-decoration: none;
@@ -135,3 +127,42 @@ body {
     transform: scale(1.05);
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
 }
+* Ensure arrows are visible */
+.swiper-button-prev,
+.swiper-button-next {
+    color: #003366; /* Set arrow color */
+    font-size: 24px; /* Adjust arrow size */
+}
+
+/* Hide default arrow text */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 24px;
+    color: #003366;
+}
+
+/* Custom Icons */
+.swiper-button-prev::after {
+    content: "\f104"; /* Left arrow (Font Awesome code) */
+}
+
+.swiper-button-next::after {
+    content: "\f105"; /* Right arrow (Font Awesome code) */
+}
+
+/* Adjust arrow positioning */
+.swiper-button-prev {
+    left: 40px;
+}
+
+.swiper-button-next {
+    right: 40px;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    color: #ff6600; /* Change color on hover */
+}
+

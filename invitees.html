@@ -16,14 +16,14 @@
     <meta property="og:url" content="https://igstcbilateralworkshop2025.in">
     <meta property="og:type" content="website">
     <title>Invitees | IGSTC Bi-Lateral Workshop 2025</title>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Swiper CSS (For Carousel) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/css/invitee.css"> <!-- Your Custom Stylesheet -->
     <link rel="stylesheet" href="assets/css/header.css"> <!-- Header Stylesheet -->
     <link rel="stylesheet" href="assets/css/footer.css"> <!-- Footer Stylesheet -->
     <!-- FontAwesome for Icons -->
-    <script src="https://kit.fontawesome.com/YOUR-FONT-AWESOME-KEY.js" crossorigin="anonymous"></script>
+   
 
 </head>
 <body>
@@ -41,6 +41,7 @@
             <li><a href="speakers.html">Speakers</a></li>
             <li><a href="invitees.html" class="active">Invitees</a></li>
             <li><a href="agenda.html">Agenda</a></li>
+            <li><a href="venue.html">Venue</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="login.html">Speaker Login</a></li>
         </ul>
@@ -162,9 +163,8 @@
 
         </div>
 
-        <!-- Navigation Arrows -->
-        <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
 
         <!-- Pagination Dots -->
         <div class="swiper-pagination"></div>
@@ -175,24 +175,25 @@
 <!-- Swiper JS for Carousel -->
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script>
-    var swiper = new Swiper('.swiper-container', {
-            loop: true,
-            slidesPerView: 3,   // Shows 3 speakers at a time
-            spaceBetween: 20,   // Space between slides
-            autoplay: {
-                delay: 2500,    // Auto slide every 2.5 sec
-                disableOnInteraction: false,
-            },
-            
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                768: { slidesPerView: 2 },
-                480: { slidesPerView: 1 }
-            }
-        });
+   var swiper = new Swiper('.swiper-container', {
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 20,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        768: { slidesPerView: 2 },
+        480: { slidesPerView: 1 }
+    }
+});
+
+
 </script>
 <footer>
     <p>&copy; 2025 IGSTC Conference | All rights reserved.</p>
