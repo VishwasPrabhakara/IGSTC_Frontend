@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             </div>
             <div style="height: 300px;" class="session">
-                <div  style="margin-top: -40px;" class="session-details  ">
+                <div  style="" class="session-details  ">
                     <h4 style="text-align: center;">Inaugural and presentation on other funding opportunities</h4>
                     
                         <div class="speaker ">
