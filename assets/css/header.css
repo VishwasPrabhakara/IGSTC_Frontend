@@ -1,6 +1,6 @@
 /* Header */
 .header {
-    font-family: "Poppins", sans-serif;
+    
     max-width: 100%;
     height: 80px;
     background: #E3F2FD;;
@@ -9,8 +9,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 15px 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
 }
 
 /* Left side logos */
