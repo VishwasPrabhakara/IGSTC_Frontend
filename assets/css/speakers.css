@@ -131,7 +131,7 @@ body {
 .swiper-button-prev,
 .swiper-button-next {
     color: #003366; /* Set arrow color */
-    font-size: 24px; /* Adjust arrow size */
+    font-size: 18px; /* Adjust arrow size */
 }
 
 /* Hide default arrow text */
