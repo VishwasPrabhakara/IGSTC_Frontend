@@ -31,7 +31,8 @@ async function saveTravel() {
         departureDate: document.getElementById("departure-date").value,
         departureTime: document.getElementById("departure-time").value,
         daysOfStay: document.getElementById("days-stay").value,
-        fieldTrip: document.getElementById("field-trip").value === "true"
+        fieldTrip: document.getElementById("field-trip").value === "true",
+        residentialAddress: document.getElementById("residential-address").value  // ✅ New field added
     };
 
     try {
@@ -42,12 +43,13 @@ async function saveTravel() {
         });
 
         const data = await response.json();
-        alert("Travel details saved!");
+        alert("Travel details saved successfully!");
     } catch (error) {
         console.error("Error saving travel details:", error);
         alert("Failed to save travel details.");
     }
 }
+
 
 async function uploadFile(inputId, category) {
     const fileInput = document.getElementById(inputId);
