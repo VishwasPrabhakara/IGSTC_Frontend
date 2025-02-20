@@ -208,12 +208,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p class="session-time">10:10 - 10:25</p>
                 </div>
             </div>
-            <div class="session">
-                <img src="assets/Speaker_photos/Dr. Navneet Kumar Gupta.jpg" alt="Speaker Photo">
+           <div class="session">
+                <img src="assets/Speaker_photos/Dr. Emanuel Ionescu.jpg" alt="Speaker Photo">
                 <div class="session-details">
-                    <h4>Dr. Navneet Kumar Gupta</h4>
-                    <p> IISc, Bengaluru</p>
-                    <p class="talk-title">From Waste to Wealth: Sustainable Materials and Renewable Energy Pathways</p>
+                    <h4>Dr. Emanuel Ionescu</h4>
+                    <p> IWKS, Germany</p>
+                    <p class="talk-title">Sustainability and Circular Economy: Research Activities at Fraunhofer Research Institution for Materials Recycling and Resource Strategy IWKS</p>
                     <p class="session-time">10:30 - 10:45</p>
                 </div>
             </div>
@@ -248,13 +248,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p class="session-time">11:40-11:55</p>
                 </div>
             </div>
-            <div class="session">
-                <img src="assets/Speaker_photos/Dr. Emanuel Ionescu.jpg" alt="Speaker Photo">
+             <div class="session">
+                <img src="assets/Speaker_photos/Dr. Navneet Kumar Gupta.jpg" alt="Speaker Photo">
                 <div class="session-details">
-                    <h4>Dr. Emanuel Ionescu</h4>
-                    <p> IWKS, Germany</p>
-                    <p class="talk-title">Sustainability and Circular Economy: Research Activities at Fraunhofer Research Institution for Materials Recycling and Resource Strategy IWKS</p>
-                    <p class="session-time">12:00 - 12:15</p>
+                    <h4>Dr. Navneet Kumar Gupta</h4>
+                    <p> IISc, Bengaluru</p>
+                    <p class="talk-title">From Waste to Wealth: Sustainable Materials and Renewable Energy Pathways</p>
+                    <p class="session-time">12:300 - 12:15</p>
                 </div>
             </div>
             <div class="session">
@@ -306,7 +306,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <i class="fa fa-coffee"></i> <span>Tea/Coffee Break</span>
                 <p>15:35 - 16:15 </p>
             </div>
-            <div class="theme-block"><h4>Integrating the legal perspective (Policy and law)<br></h4>
+            <div class="theme-block"><h4>Water Security and Integrating the legal perspective (Policy and law)<br></h4>
                 <h3><strong> Session Chair :</strong>  Prof. Sanjay Mathur</h3> 
             </div>
             <div class="session">
