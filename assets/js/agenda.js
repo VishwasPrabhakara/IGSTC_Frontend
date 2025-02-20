@@ -34,8 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p class="session-time">9:30 - 10:00</p>
                 </div>
             </div>
-            <div style="height: 450px;" class="session">
-                <div  style="" class="session-details  ">
+            <div style="height: 300px;" class="session">
+                <div  style="margin-top: -40px;" class="session-details  ">
                     <h4 style="text-align: center;">Inaugural and presentation on other funding opportunities</h4>
                     
                         <div class="speaker ">
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                     <p class="session-time" style="text-align: center; margin-top: -80px;">10:05 - 10:25</p>
                 </div>
-            </div>
+            </div><br>
             <div class="session-break">
                 <i class="fa fa-coffee"></i> <span>Tea/Coffee Break</span>
                 <p>10:30 - 11:00</p>
