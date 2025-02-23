@@ -203,3 +203,7 @@ body {
 .highlight-box:hover i {
     color: white;
 }
+
+a {
+    text-decoration: none; color: beige;
+}
