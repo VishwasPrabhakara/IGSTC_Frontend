@@ -20,7 +20,7 @@
     <script>
         async function fetchDownloads() {
             // Fetch PPTs
-            const pptResponse = await fetch("https://igstc-workshop-website-backend.onrender.com/api/downloads/ppts/");
+            const pptResponse = await fetch("https://igstc-workshop-website-backend.onrender.com/api/downloads/PPT/");
             const pptData = await pptResponse.json();
             const pptList = document.getElementById("ppts-list");
 
