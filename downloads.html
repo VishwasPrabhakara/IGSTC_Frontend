@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads - Conference</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Download Conference Files</h1>
+
+    <h2>Download Speaker PPTs</h2>
+    <ul id="ppts-list">
+        <!-- PPT links will be inserted here -->
+    </ul>
+
+    <h2>Download All Event Photos</h2>
+    <a id="photos-link" href="#" class="download-btn">Download All Photos</a>
+
+    <script>
+        async function fetchDownloads() {
+            // Fetch PPTs
+            const pptResponse = await fetch("https://igstc-workshop-website-backend.onrender.com/api/downloads/ppts/");
+            const pptData = await pptResponse.json();
+            const pptList = document.getElementById("ppts-list");
+
+            pptData.ppts.forEach(ppt => {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.href = ppt.url;
+                a.textContent = ppt.name;
+                a.download = ppt.name;
+                li.appendChild(a);
+                pptList.appendChild(li);
+            });
+
+            // Fetch Photo Link
+            const photosResponse = await fetch("https://igstc-workshop-website-backend.onrender.com/api/downloads/photos/");
+            const photosData = await photosResponse.json();
+            document.getElementById("photos-link").href = photosData.photos_url;
+        }
+
+        fetchDownloads();
+    </script>
+</body>
+</html>
