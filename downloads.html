@@ -10,9 +10,9 @@
     <h1>Download Conference Files</h1>
 
     <h2>Download Speaker PPTs</h2>
-    <div id="ppts-list">
-        <!-- Speaker PPTs will be inserted here -->
-    </div>
+    <ul id="ppts-list">
+        <!-- PPT links will be inserted here -->
+    </ul>
 
     <h2>Download All Event Photos</h2>
     <a id="photos-link" href="#" class="download-btn">Download All Photos</a>
@@ -20,37 +20,26 @@
     <script>
         async function fetchDownloads() {
             try {
-                // Fetch PPTs from the backend
+                // Fetch PPTs
                 const pptResponse = await fetch("https://igstc-workshop-website-backend.onrender.com/api/downloads/ppts/");
                 if (!pptResponse.ok) throw new Error("Failed to fetch PPTs");
 
                 const pptData = await pptResponse.json();
                 const pptList = document.getElementById("ppts-list");
 
-                if (!pptData.speakers || Object.keys(pptData.speakers).length === 0) {
-                    pptList.innerHTML = "<p>No PPTs available for download.</p>";
+                if (!pptData.ppts || pptData.ppts.length === 0) {
+                    pptList.innerHTML = "<li>No PPTs available for download.</li>";
                     return;
                 }
 
-                // Iterate through each speaker and display their PPTs
-                Object.keys(pptData.speakers).forEach(speaker => {
-                    const speakerDiv = document.createElement("div");
-                    speakerDiv.innerHTML = `<h3>${speaker}</h3>`;
-                    
-                    const ul = document.createElement("ul");
-
-                    pptData.speakers[speaker].forEach(ppt => {
-                        const li = document.createElement("li");
-                        const a = document.createElement("a");
-                        a.href = ppt.url;
-                        a.textContent = ppt.name;
-                        a.download = ppt.name;
-                        li.appendChild(a);
-                        ul.appendChild(li);
-                    });
-
-                    speakerDiv.appendChild(ul);
-                    pptList.appendChild(speakerDiv);
+                pptData.ppts.forEach(ppt => {
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.href = ppt.url;
+                    a.textContent = ppt.name;
+                    a.download = ppt.name;
+                    li.appendChild(a);
+                    pptList.appendChild(li);
                 });
 
                 // Fetch Photo Link
@@ -61,7 +50,7 @@
                 document.getElementById("photos-link").href = photosData.photos_url;
             } catch (error) {
                 console.error("Error:", error);
-                document.getElementById("ppts-list").innerHTML = "<p>Error loading PPTs. Please try again later.</p>";
+                document.getElementById("ppts-list").innerHTML = "<li>Error loading PPTs. Please try again later.</li>";
             }
         }
 
