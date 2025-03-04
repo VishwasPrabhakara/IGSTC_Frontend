@@ -19,28 +19,44 @@
 
     <script>
         async function fetchDownloads() {
-            // Fetch PPTs
-            const pptResponse = await fetch("https://igstc-workshop-website-backend.onrender.com/api/downloads/PPT/");
-            const pptData = await pptResponse.json();
-            const pptList = document.getElementById("ppts-list");
-
-            pptData.ppts.forEach(ppt => {
-                const li = document.createElement("li");
-                const a = document.createElement("a");
-                a.href = ppt.url;
-                a.textContent = ppt.name;
-                a.download = ppt.name;
-                li.appendChild(a);
-                pptList.appendChild(li);
-            });
-
-            // Fetch Photo Link
-            const photosResponse = await fetch("https://igstc-workshop-website-backend.onrender.com/api/downloads/photos/");
-            const photosData = await photosResponse.json();
-            document.getElementById("photos-link").href = photosData.photos_url;
+            try {
+                // Corrected API URL (lowercase 'ppts')
+                const pptResponse = await fetch("https://igstc-workshop-website-backend.onrender.com/api/downloads/ppts/");
+                if (!pptResponse.ok) throw new Error("Failed to fetch PPTs");
+    
+                const pptData = await pptResponse.json();
+                const pptList = document.getElementById("ppts-list");
+    
+                // Handle case when no PPTs are found
+                if (!pptData.ppts || pptData.ppts.length === 0) {
+                    pptList.innerHTML = "<li>No PPTs available for download.</li>";
+                    return;
+                }
+    
+                pptData.ppts.forEach(ppt => {
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.href = ppt.url;
+                    a.textContent = ppt.name;
+                    a.download = ppt.name;
+                    li.appendChild(a);
+                    pptList.appendChild(li);
+                });
+    
+                // Fetch Photo Link
+                const photosResponse = await fetch("https://igstc-workshop-website-backend.onrender.com/api/downloads/photos/");
+                if (!photosResponse.ok) throw new Error("Failed to fetch photos link");
+    
+                const photosData = await photosResponse.json();
+                document.getElementById("photos-link").href = photosData.photos_url;
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById("ppts-list").innerHTML = "<li>Error loading PPTs. Please try again later.</li>";
+            }
         }
-
+    
         fetchDownloads();
     </script>
+    
 </body>
 </html>
