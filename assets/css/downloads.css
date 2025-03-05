@@ -1,0 +1,80 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Header Styling */
+h1 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #004080;
+    margin-top: 30px;
+}
+
+/* Section Titles */
+h2 {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-top: 20px;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+/* Download List Styling */
+#ppts-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: auto;
+}
+
+#ppts-list li {
+    background: #ffffff;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+#ppts-list li:hover {
+    background: #e6f2ff;
+}
+
+/* Download Links */
+#ppts-list li a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0056b3;
+    display: flex;
+    align-items: center;
+}
+
+#ppts-list li a:hover {
+    color: #002b5e;
+}
+
+/* Download Button for Photos */
+.download-btn {
+    display: inline-block;
+    background: #0056b3;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    background: #003366;
+}

@@ -4,9 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Downloads - Conference</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/downloads.css">
 </head>
 <body>
+    <header class="header">
+        <div class="header-left">
+            <a href="https://iisc.ac.in/" target="_blank"><img src="assets/logo/IISC_logo.png" alt="IISc"></a>
+            <a href="index.html"><img src="assets/logo/IGSTC_logo.png" alt="IGSTC"></a>
+            <a href="https://www.uni-koeln.de/en/" target="_blank"><img src="assets/logo/universityofcologne.png" alt="University Of Cologne "></a>
+        </div>
+        <nav class="header-right">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="speakers.html">Speakers</a></li>
+                <li><a href="invitees.html">Invitees</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="venue.html">Venue</a></li>
+                <li><a href="contact.html" >Contact</a></li>
+                <li><a href="downloads.html" class="active">PPTs & Photos</a></li>
+            </ul>
+        </nav>
+    </header>
     <h1>Download Conference Files</h1>
 
     <h2>Download Speaker PPTs</h2>
@@ -15,7 +36,7 @@
     </ul>
 
     <h2>Download All Event Photos</h2>
-    <a id="photos-link" href="#" class="download-btn">Download All Photos</a>
+    <br><a id="photos-link" href="#" class="download-btn">Download Photos</a>
 
     <script>
         async function fetchDownloads() {
@@ -56,5 +77,9 @@
 
         fetchDownloads();
     </script>
+    
 </body>
+<footer>
+    <p>&copy; 2025 IGSTC Conference | All rights reserved.</p>
+</footer>
 </html>
