@@ -27,11 +27,13 @@
                 const pptData = await pptResponse.json();
                 const pptList = document.getElementById("ppts-list");
 
+                // Handle case when no PPTs are found
                 if (!pptData.ppts || pptData.ppts.length === 0) {
                     pptList.innerHTML = "<li>No PPTs available for download.</li>";
                     return;
                 }
 
+                // List all available PPTs
                 pptData.ppts.forEach(ppt => {
                     const li = document.createElement("li");
                     const a = document.createElement("a");
@@ -42,14 +44,14 @@
                     pptList.appendChild(li);
                 });
 
-                // Fetch Photo Link
+                // Fetch Photo Download Link
                 const photosResponse = await fetch("https://igstc-workshop-website-backend.onrender.com/api/downloads/photos/");
                 if (!photosResponse.ok) throw new Error("Failed to fetch photos link");
 
                 const photosData = await photosResponse.json();
                 document.getElementById("photos-link").href = photosData.photos_url;
             } catch (error) {
-                console.error("Error:", error);
+                console.error("❌ Error:", error);
                 document.getElementById("ppts-list").innerHTML = "<li>Error loading PPTs. Please try again later.</li>";
             }
         }
