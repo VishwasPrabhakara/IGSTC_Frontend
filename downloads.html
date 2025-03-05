@@ -45,7 +45,7 @@
                 });
 
                 // Fetch Photo Download Link
-                const photosResponse = await fetch("https://igstc-workshop-website-backend.onrender.com/api/downloads/photos/");
+                const photosResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/photos/");
                 if (!photosResponse.ok) throw new Error("Failed to fetch photos link");
 
                 const photosData = await photosResponse.json();
