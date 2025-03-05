@@ -21,7 +21,7 @@
         async function fetchDownloads() {
             try {
                 // Fetch PPTs
-                const pptResponse = await fetch("https://igstc-workshop-website-backend.onrender.com/api/downloads/ppts/");
+                const pptResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/ppts/");
                 if (!pptResponse.ok) throw new Error("Failed to fetch PPTs");
 
                 const pptData = await pptResponse.json();
