@@ -50,8 +50,8 @@
     </div>
 
     <!-- Photos Download Section -->
-    <h2>Download All Event Photos</h2>
-    <a id="photos-link" href="#" class="download-btn">Download Photos</a>
+    <h2>Download Event Photos</h2>
+    <br><a id="" href="https://indianinstituteofscience-my.sharepoint.com/:f:/g/personal/rohanhs_iisc_ac_in/EnHKaOLN7NxIgyxKSB0OsIkBOGaq7A-mIKLZZqd7AxdlBw?e=nM7ruo" class="download-btn">Download Photos</a>
 
     <script>
         async function fetchDownloads() {
@@ -82,12 +82,7 @@
                     pptContainer.appendChild(div);
                 });
 
-                // ✅ Fetch Photo Download Link
-                const photosResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/photos/");
-                if (!photosResponse.ok) throw new Error("Failed to fetch photos link");
-
-                const photosData = await photosResponse.json();
-                document.getElementById("photos-link").href = photosData.photos_url;
+                
             } catch (error) {
                 console.error("❌ Error:", error);
                 document.getElementById("ppts-container").innerHTML = "<p>Error loading PPTs. Please try again later.</p>";
