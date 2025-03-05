@@ -9,21 +9,24 @@
     <meta name="keywords" content="IGSTC, Workshop 2025, AI, Sustainability, Networking">
 
     <meta http-equiv="Content-Security-Policy" content="
-  default-src 'self' https:;
-  script-src 'self' https: 'unsafe-inline';
-  style-src 'self' https: 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com;
-  font-src 'self' https://fonts.gstatic.com data:;
-  img-src 'self' https: data:;
-  object-src 'none';
-">
-
+      default-src 'self' https:;
+      script-src 'self' https: 'unsafe-inline';
+      style-src 'self' https: 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com data:;
+      img-src 'self' https: data:;
+      object-src 'none';
+    ">
 
     <title>PPTs & Photos | IGSTC Bi-Lateral Workshop 2025</title>
+
+    <!-- External Styles -->
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/downloads.css">
 </head>
+
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="header-left">
             <a href="https://iisc.ac.in/" target="_blank"><img src="assets/logo/IISC_logo.png" alt="IISc"></a>
@@ -38,20 +41,24 @@
                 <li><a href="invitees.html">Invitees</a></li>
                 <li><a href="agenda.html">Agenda</a></li>
                 <li><a href="venue.html">Venue</a></li>
-                <li><a href="contact.html" >Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>
                 <li><a href="downloads.html" class="active">PPTs & Photos</a></li>
             </ul>
         </nav>
     </header>
+
+    <!-- Page Title -->
     <h1>Download Conference Files</h1>
 
+    <!-- PPT Downloads Section -->
     <h2>Download Speaker PPTs</h2>
-    <ul id="ppts-list">
-        <!-- PPT links will be inserted here -->
-    </ul>
+    <div id="ppts-container" class="grid-container">
+        <!-- PPT links will be dynamically inserted here -->
+    </div>
 
+    <!-- Photos Download Section -->
     <h2>Download All Event Photos</h2>
-    <br><a id="photos-link" href="#" class="download-btn">Download Photos</a><br>
+    <a id="photos-link" href="#" class="download-btn">Download Photos</a>
 
     <script>
         async function fetchDownloads() {
@@ -61,21 +68,25 @@
                 if (!pptResponse.ok) throw new Error("Failed to fetch PPTs");
 
                 const pptData = await pptResponse.json();
-                const pptList = document.getElementById("ppts-list");
+                const pptContainer = document.getElementById("ppts-container");
 
                 if (!pptData.ppts || pptData.ppts.length === 0) {
-                    pptList.innerHTML = "<li>No PPTs available for download.</li>";
+                    pptContainer.innerHTML = "<p>No PPTs available for download.</p>";
                     return;
                 }
 
+                // ✅ Create a grid of PPT links (4 per row)
                 pptData.ppts.forEach(ppt => {
-                    const li = document.createElement("li");
+                    const div = document.createElement("div");
+                    div.className = "ppt-item";
+
                     const a = document.createElement("a");
                     a.href = ppt.url;
                     a.textContent = ppt.name;
                     a.download = ppt.name;
-                    li.appendChild(a);
-                    pptList.appendChild(li);
+
+                    div.appendChild(a);
+                    pptContainer.appendChild(div);
                 });
 
                 // ✅ Fetch Photo Download Link
@@ -86,7 +97,7 @@
                 document.getElementById("photos-link").href = photosData.photos_url;
             } catch (error) {
                 console.error("❌ Error:", error);
-                document.getElementById("ppts-list").innerHTML = "<li>Error loading PPTs. Please try again later.</li>";
+                document.getElementById("ppts-container").innerHTML = "<p>Error loading PPTs. Please try again later.</p>";
             }
         }
 
@@ -94,7 +105,10 @@
     </script>
     
 </body>
+
+<!-- Footer -->
 <footer>
     <p>&copy; 2025 IGSTC Conference | All rights reserved.</p>
 </footer>
+
 </html>

@@ -4,49 +4,57 @@ body {
     background-color: #f4f4f9;
     color: #333;
     margin: 0;
-    padding: 0;
+    padding: 20px 0;
     text-align: center;
 }
 
 /* Header */
 h1 {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: bold;
-    color: #004080;
-    margin-top: 30px;
+    color: #003366;
+    margin-bottom: 20px;
 }
 
 /* Section Titles */
 h2 {
-    font-size: 1.8rem;
-    color: #003366;
-    margin-top: 20px;
-    border-bottom: 2px solid #0056b3;
-    padding-bottom: 5px;
+    font-size: 2rem;
+    color: #002855;
+    margin-top: 30px;
+    border-bottom: 3px solid #0056b3;
+    padding-bottom: 8px;
     display: inline-block;
 }
 
 /* Grid Layout for PPTs */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 per row */
+    grid-template-columns: repeat(4, 1fr); /* Always 4 per row */
     gap: 16px;
-    padding: 20px;
     max-width: 1200px;
-    margin: auto;
+    margin: 30px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Individual PPT Items */
 .ppt-item {
-    background: #ffffff;
+    background: #f8f9fd;
     padding: 12px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .ppt-item:hover {
-    background: #e6f2ff;
+    background: #e0ebf8;
+    transform: scale(1.03);
 }
 
 /* Download Links */
@@ -54,34 +62,31 @@ h2 {
     text-decoration: none;
     font-size: 1rem;
     font-weight: bold;
-    color: #0056b3;
-    display: block;
+    color: #004080;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: color 0.3s ease;
 }
 
 .ppt-item a:hover {
     color: #002b5e;
+    text-decoration: underline;
 }
 
 /* Download Button */
 .download-btn {
     display: inline-block;
-    background: #0056b3;
+    background: #004080;
     color: white;
     font-size: 1.2rem;
-    padding: 12px 20px;
+    font-weight: bold;
+    padding: 14px 24px;
     border-radius: 8px;
     text-decoration: none;
-    margin-top: 20px;
+    margin-top: 25px;
     transition: all 0.3s ease;
 }
 
 .download-btn:hover {
-    background: #003366;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 per row for smaller screens */
-    }
+    background: #002b5e;
 }
