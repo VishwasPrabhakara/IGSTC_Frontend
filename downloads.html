@@ -17,12 +17,13 @@
 </head>
 
 <body>
+
     <!-- Header -->
     <header class="header">
         <div class="header-left">
             <a href="https://iisc.ac.in/" target="_blank"><img src="assets/logo/IISC_logo.png" alt="IISc"></a>
             <a href="index.html"><img src="assets/logo/IGSTC_logo.png" alt="IGSTC"></a>
-            <a href="https://www.uni-koeln.de/en/" target="_blank"><img src="assets/logo/universityofcologne.png" alt="University Of Cologne "></a>
+            <a href="https://www.uni-koeln.de/en/" target="_blank"><img src="assets/logo/universityofcologne.png" alt="University Of Cologne"></a>
         </div>
         <nav class="header-right">
             <ul>
@@ -53,7 +54,7 @@
 
     <br><h4>Field Trip Photos</h4>
 
-<!-- Image Carousel -->
+    <!-- Image Carousel -->
     <div class="carousel-container">
         <div class="carousel" id="photo-carousel">
             <!-- Images will be inserted dynamically here -->
@@ -71,8 +72,6 @@
         </div>
         <img id="lightbox-image" src="" alt="Full Image">
     </div>
-    
-
 
     <!-- JavaScript for PPTs & Field Trip Photos -->
     <script>
@@ -102,24 +101,30 @@
                     });
                 }
 
-                // ✅ Fetch Field Trip Photos & Create Carousel
+                // ✅ Fetch Field Trip Photos from S3
+                const photoResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/field-trip-photos/");
+                if (!photoResponse.ok) throw new Error("Failed to fetch photos");
+
+                const photoData = await photoResponse.json();
                 const photoContainer = document.getElementById("photo-carousel");
-                const totalPhotos = 42;
-                const imagePath = "assets/images/field-trip/";
 
-                for (let i = 1; i <= totalPhotos; i++) {
-                    const img = document.createElement("img");
-                    img.src = `${imagePath}photo${i}.jpg`;
-                    img.className = "carousel-image";
-                    img.alt = `Field Trip Photo ${i}`;
-                    img.setAttribute("data-index", i - 1); // Store index for navigation
+                if (!photoData.photos || photoData.photos.length === 0) {
+                    photoContainer.innerHTML = "<p>No Field Trip Photos available.</p>";
+                } else {
+                    photoData.photos.forEach((photo, index) => {
+                        const img = document.createElement("img");
+                        img.src = photo.url;
+                        img.className = "carousel-image";
+                        img.alt = `Field Trip Photo ${index + 1}`;
+                        img.setAttribute("data-index", index);
 
-                    // Open Lightbox When Clicked
-                    img.addEventListener("click", function () {
-                        openLightbox(img.src, i - 1);
+                        // Open Lightbox When Clicked
+                        img.addEventListener("click", function () {
+                            openLightbox(img.src, index);
+                        });
+
+                        photoContainer.appendChild(img);
                     });
-
-                    photoContainer.appendChild(img);
                 }
             } catch (error) {
                 console.error("❌ Error:", error);
@@ -130,8 +135,7 @@
 
         // ✅ Lightbox Functionality
         let currentIndex = 0;
-        const totalPhotos = 42;
-        const imagePath = "assets/images/field-trip/";
+        let photosList = [];
 
         function openLightbox(src, index) {
             currentIndex = index;
@@ -145,12 +149,12 @@
         function changeSlide(direction) {
             currentIndex += direction;
             if (currentIndex < 0) {
-                currentIndex = totalPhotos - 1;
-            } else if (currentIndex >= totalPhotos) {
+                currentIndex = photosList.length - 1;
+            } else if (currentIndex >= photosList.length) {
                 currentIndex = 0;
             }
-            document.getElementById("lightbox-image").src = `${imagePath}photo${currentIndex + 1}.jpg`;
-            document.getElementById("download-btn").href = `${imagePath}photo${currentIndex + 1}.jpg`;
+            document.getElementById("lightbox-image").src = photosList[currentIndex].url;
+            document.getElementById("download-btn").href = photosList[currentIndex].url;
             document.getElementById("download-btn").setAttribute("download", `FieldTripPhoto${currentIndex + 1}.jpg`);
         }
 
@@ -161,7 +165,6 @@
 
         // ✅ Fetch and Display Files on Page Load
         fetchDownloads();
-
     </script>
 
     <br><br>
