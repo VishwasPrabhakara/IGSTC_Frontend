@@ -7,13 +7,56 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="IGSTC Conference Team">
     <meta name="keywords" content="IGSTC, Workshop 2025, AI, Sustainability, Networking">
-
+    
     <title>PPTs & Photos | IGSTC Bi-Lateral Workshop 2025</title>
 
     <!-- External Styles -->
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/downloads.css">
+    
+    <!-- Swiper.js for Carousel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <style>
+        /* Lightbox Styling */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 8px;
+        }
+        .lightbox-header {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            margin-bottom: 10px;
+        }
+        .download-lightbox {
+            color: white;
+            text-decoration: none;
+            background: #ff5733;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+        .close-lightbox {
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,148 +82,113 @@
         </nav>
     </header>
 
-   <!-- Page Title -->
-   <h2>Download Conference Files</h2>
+    <h2>Download Conference Files</h2>
 
-   <!-- PPT Downloads Section -->
-   <br><h4>Download Speaker PPTs</h4>
-   <div id="ppts-container" class="grid-container"></div>
+    <!-- PPT Downloads Section -->
+    <h4>Download Speaker PPTs</h4>
+    <div id="ppts-container" class="grid-container"></div>
 
-   <!-- Photos Download Section -->
-   <h4>Download Event Photos</h4>
-   <br><a target="_blank" href="https://your-onedrive-link.com" class="download-btn">Download Photos</a>
+    <!-- Photos Download Section -->
+    <h4>Download Event Photos</h4>
+    <a target="_blank" href="https://your-onedrive-link.com" class="download-btn">Download Photos</a>
 
-   <br><h4>Field Trip Photos</h4>
+    <h4>Field Trip Photos</h4>
 
-   <!-- Image Carousel -->
-   <div class="carousel-container">
-       <div class="carousel" id="photo-carousel"></div>
-       <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
-       <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
-   </div>
+    <!-- Image Carousel using Swiper.js -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="photo-carousel"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
 
-   <!-- Lightbox for Enlarged Image -->
-   <div id="lightbox" class="lightbox">
-       <div class="lightbox-header">
-           <a id="download-btn" href="#" download class="download-lightbox">Download</a>
-           <span class="close-lightbox" onclick="closeLightbox()">✖</span>
-       </div>
-       <button class="lightbox-nav prev" onclick="changeLightboxSlide(-1)">❮</button>
-       <img id="lightbox-image" src="" alt="Full Image">
-       <button class="lightbox-nav next" onclick="changeLightboxSlide(1)">❯</button>
-   </div>
+    <!-- Lightbox for Enlarged Image -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-header">
+            <a id="download-btn" href="#" download class="download-lightbox">Download</a>
+            <span class="close-lightbox" onclick="closeLightbox()">✖</span>
+        </div>
+        <img id="lightbox-image" src="" alt="Full Image">
+    </div>
 
-   <!-- JavaScript -->
-   <script>
-       let photosList = [];
-       let currentIndex = 0;
-       let carouselIndex = 0;
-       let carouselInterval;
+    <!-- Swiper.js and JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        let photosList = [];
+        let currentIndex = 0;
 
-       async function fetchDownloads() {
-           try {
-               // ✅ Fetch PPTs
-               const pptResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/ppts/");
-               if (!pptResponse.ok) throw new Error("Failed to fetch PPTs");
+        async function fetchDownloads() {
+            try {
+                // ✅ Fetch PPTs
+                const pptResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/ppts/");
+                if (!pptResponse.ok) throw new Error("Failed to fetch PPTs");
 
-               const pptData = await pptResponse.json();
-               const pptContainer = document.getElementById("ppts-container");
+                const pptData = await pptResponse.json();
+                const pptContainer = document.getElementById("ppts-container");
 
-               if (!pptData.ppts || pptData.ppts.length === 0) {
-                   pptContainer.innerHTML = "<p>No PPTs available for download.</p>";
-               } else {
-                   pptData.ppts.forEach(ppt => {
-                       const div = document.createElement("div");
-                       div.className = "ppt-item";
+                if (!pptData.ppts || pptData.ppts.length === 0) {
+                    pptContainer.innerHTML = "<p>No PPTs available for download.</p>";
+                } else {
+                    pptData.ppts.forEach(ppt => {
+                        const div = document.createElement("div");
+                        div.className = "ppt-item";
 
-                       const a = document.createElement("a");
-                       a.href = ppt.url;
-                       a.textContent = ppt.name;
-                       a.download = ppt.name;
+                        const a = document.createElement("a");
+                        a.href = ppt.url;
+                        a.textContent = ppt.name;
+                        a.download = ppt.name;
 
-                       div.appendChild(a);
-                       pptContainer.appendChild(div);
-                   });
-               }
+                        div.appendChild(a);
+                        pptContainer.appendChild(div);
+                    });
+                }
 
-               // ✅ Fetch Field Trip Photos from S3
-               const photoResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/field-trip-photos/");
-               if (!photoResponse.ok) throw new Error("Failed to fetch photos");
+                // ✅ Fetch Field Trip Photos from S3
+                const photoResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/field-trip-photos/");
+                if (!photoResponse.ok) throw new Error("Failed to fetch photos");
 
-               const photoData = await photoResponse.json();
-               const photoContainer = document.getElementById("photo-carousel");
+                const photoData = await photoResponse.json();
+                const photoContainer = document.getElementById("photo-carousel");
 
-               if (!photoData.photos || photoData.photos.length === 0) {
-                   photoContainer.innerHTML = "<p>No Field Trip Photos available.</p>";
-               } else {
-                   photosList = photoData.photos;
-                   photoContainer.innerHTML = ""; // Clear previous images
+                if (!photoData.photos || photoData.photos.length === 0) {
+                    photoContainer.innerHTML = "<p>No Field Trip Photos available.</p>";
+                } else {
+                    photosList = photoData.photos;
+                    photoData.photos.forEach((photo, index) => {
+                        const imgDiv = document.createElement("div");
+                        imgDiv.className = "swiper-slide";
+                        imgDiv.innerHTML = `<img src="${photo.url}" class="carousel-image" data-index="${index}" onclick="openLightbox('${photo.url}', ${index})">`;
+                        photoContainer.appendChild(imgDiv);
+                    });
 
-                   photoData.photos.forEach((photo, index) => {
-                       const img = document.createElement("img");
-                       img.src = photo.url;
-                       img.className = "carousel-image";
-                       img.alt = `Field Trip Photo ${index + 1}`;
-                       img.setAttribute("data-index", index);
+                    new Swiper('.swiper-container', {
+                        loop: true,
+                        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+                        autoplay: { delay: 3000, disableOnInteraction: false }
+                    });
+                }
+            } catch (error) {
+                console.error("❌ Error:", error);
+                document.getElementById("ppts-container").innerHTML = "<p>Error loading PPTs. Please try again later.</p>";
+            }
+        }
 
-                       // Open Lightbox When Clicked
-                       img.addEventListener("click", function () {
-                           openLightbox(photo.url, index);
-                       });
+        function openLightbox(src, index) {
+            document.getElementById("lightbox").style.display = "flex";
+            document.getElementById("lightbox-image").src = src;
+            document.getElementById("download-btn").href = src;
+            currentIndex = index;
+        }
 
-                       photoContainer.appendChild(img);
-                   });
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
 
-                   startCarousel();
-               }
-           } catch (error) {
-               console.error("❌ Error:", error);
-               document.getElementById("ppts-container").innerHTML = "<p>Error loading PPTs. Please try again later.</p>";
-           }
-       }
+        // ✅ Fetch all data on page load
+        fetchDownloads();
+    </script>
 
-       // ✅ Start Auto Carousel
-       function startCarousel() {
-           const carousel = document.getElementById("photo-carousel");
-           carouselInterval = setInterval(() => {
-               if (photosList.length > 1) {
-                   carouselIndex = (carouselIndex + 1) % photosList.length;
-                   carousel.style.transform = `translateX(-${carouselIndex * 100}%)`;
-               }
-           }, 3000); // Move every 3 seconds
-       }
-
-       // ✅ Open Lightbox
-       function openLightbox(src, index) {
-           clearInterval(carouselInterval);
-           currentIndex = index;
-           document.getElementById("lightbox").style.display = "flex";
-           document.getElementById("lightbox-image").src = src;
-           document.getElementById("download-btn").href = src;
-           document.getElementById("download-btn").setAttribute("download", `FieldTripPhoto${index + 1}.jpg`);
-       }
-
-       // ✅ Close Lightbox
-       function closeLightbox() {
-           document.getElementById("lightbox").style.display = "none";
-           startCarousel();
-       }
-
-       // ✅ Change Lightbox Slide
-       function changeLightboxSlide(direction) {
-           currentIndex += direction;
-           if (currentIndex < 0) currentIndex = photosList.length - 1;
-           else if (currentIndex >= photosList.length) currentIndex = 0;
-
-           document.getElementById("lightbox-image").src = photosList[currentIndex].url;
-       }
-
-       // ✅ Fetch and Display Files on Page Load
-       fetchDownloads();
-   </script>
-
-   <footer>
-       <p>&copy; 2025 IGSTC Conference | All rights reserved.</p>
-   </footer>
+    <footer>
+        <p>&copy; 2025 IGSTC Conference | All rights reserved.</p>
+    </footer>
 </body>
 </html>
