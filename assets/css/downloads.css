@@ -115,15 +115,10 @@ h4 {
     opacity: 0.9;
 }
 
-/* Move Carousel Navigation Buttons Lower */
+/* Disable Swiper Navigation Buttons */
 .swiper-button-next,
 .swiper-button-prev {
     display: none !important;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-    background: rgba(0, 0, 0, 0.8);
 }
 
 /* Lightbox Fullscreen View */
@@ -164,6 +159,7 @@ h4 {
     border-radius: 6px;
     text-decoration: none;
     transition: background 0.3s ease;
+    cursor: pointer;
 }
 
 .download-lightbox:hover {
@@ -194,7 +190,7 @@ h4 {
 /* Move Lightbox Navigation Buttons Lower */
 .lightbox-nav {
     position: absolute;
-    top: 85%; /* Moves buttons further down */
+    top: 90%; /* Moves buttons further down */
     transform: translateY(-50%);
     background: rgba(0, 0, 0, 0.7);
     color: white;

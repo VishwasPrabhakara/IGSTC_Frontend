@@ -7,14 +7,14 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="IGSTC Conference Team">
     <meta name="keywords" content="IGSTC, Workshop 2025, AI, Sustainability, Networking">
-    
+
     <title>PPTs & Photos | IGSTC Bi-Lateral Workshop 2025</title>
 
     <!-- External Styles -->
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/downloads.css">
-    
+
     <!-- Swiper.js for Carousel -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
@@ -50,11 +50,27 @@
             background: #ff5733;
             padding: 8px 12px;
             border-radius: 5px;
+            cursor: pointer;
         }
         .close-lightbox {
             cursor: pointer;
             font-size: 24px;
             color: white;
+        }
+        /* Move Swiper Navigation Buttons Lower */
+        .swiper-button-next,
+        .swiper-button-prev {
+            top: 70%; /* Moves buttons further down */
+            transform: translateY(-50%);
+            color: white !important;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 14px;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background: rgba(0, 0, 0, 0.8);
         }
     </style>
 </head>
@@ -90,7 +106,7 @@
 
     <!-- Photos Download Section -->
     <br><br><h4>Download Event Photos</h4>
-    <br><br><a target="_blank" href="https://indianinstituteofscience-my.sharepoint.com/personal/rohanhs_iisc_ac_in/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Frohanhs%5Fiisc%5Fac%5Fin%2FDocuments%2FIGSTC%5F2025%5FIISc%5FLNR&ga=1" class="download-btn">Download Photos</a>
+    <br><br><a target="_blank" href="https://indianinstituteofscience-my.sharepoint.com" class="download-btn">Download Photos</a>
 
     <br><br><h4>Field Trip Photos</h4>
 
@@ -104,7 +120,7 @@
     <!-- Lightbox for Enlarged Image -->
     <div id="lightbox" class="lightbox">
         <div class="lightbox-header">
-            <a id="download-btn" href="#" download class="download-lightbox">Download</a>
+            <button id="download-btn" class="download-lightbox">Download</button>
             <span class="close-lightbox" onclick="closeLightbox()">✖</span>
         </div>
         <img id="lightbox-image" src="" alt="Full Image">
@@ -162,28 +178,33 @@
 
                     new Swiper('.swiper-container', {
                         loop: true,
-                        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
                         autoplay: { delay: 3000, disableOnInteraction: false }
                     });
                 }
             } catch (error) {
                 console.error("❌ Error:", error);
-                document.getElementById("ppts-container").innerHTML = "<p>Error loading PPTs. Please try again later.</p>";
             }
         }
 
         function openLightbox(src, index) {
             document.getElementById("lightbox").style.display = "flex";
             document.getElementById("lightbox-image").src = src;
-            document.getElementById("download-btn").href = src;
-            currentIndex = index;
+            document.getElementById("download-btn").onclick = () => forceDownload(src, `Image_${index + 1}.jpg`);
         }
 
         function closeLightbox() {
             document.getElementById("lightbox").style.display = "none";
         }
 
-        // ✅ Fetch all data on page load
+        function forceDownload(url, filename) {
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
         fetchDownloads();
     </script>
 
