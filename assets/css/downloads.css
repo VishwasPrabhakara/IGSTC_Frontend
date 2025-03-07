@@ -115,21 +115,7 @@ h4 {
     opacity: 0.9;
 }
 
-/* Swiper Navigation Buttons */
-.swiper-button-next,
-.swiper-button-prev {
-    color: white !important;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 12px;
-    border-radius: 50%;
-    top: 80%;
-    transition: background 0.3s ease;
-}
 
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-    background: rgba(0, 0, 0, 0.8);
-}
 
 /* Lightbox Fullscreen View */
 .lightbox {
