@@ -39,137 +39,135 @@
         </nav>
     </header>
 
-    <!-- Page Title -->
-    <h2>Download Conference Files</h2>
+   <!-- Page Title -->
+   <h2>Download Conference Files</h2>
 
-    <!-- PPT Downloads Section -->
-    <br><h4>Download Speaker PPTs</h4>
-    <div id="ppts-container" class="grid-container">
-        <!-- PPT links will be dynamically inserted here -->
-    </div>
+   <!-- PPT Downloads Section -->
+   <br><h4>Download Speaker PPTs</h4>
+   <div id="ppts-container" class="grid-container">
+       <!-- PPT links will be dynamically inserted here -->
+   </div>
 
-    <!-- Photos Download Section -->
-    <h4>Download Event Photos</h4>
-    <br><a target="_blank" href="https://indianinstituteofscience-my.sharepoint.com/:f:/g/personal/rohanhs_iisc_ac_in/EnHKaOLN7NxIgyxKSB0OsIkBOGaq7A-mIKLZZqd7AxdlBw?e=nM7ruo" class="download-btn">Download Photos</a>
+   <!-- Photos Download Section -->
+   <h4>Download Event Photos</h4>
+   <br><a target="_blank" href="https://your-onedrive-link.com" class="download-btn">Download Photos</a>
 
-    <br><h4>Field Trip Photos</h4>
+   <br><h4>Field Trip Photos</h4>
 
-    <!-- Image Carousel -->
-    <div class="carousel-container">
-        <div class="carousel" id="photo-carousel">
-            <!-- Images will be inserted dynamically here -->
-        </div>
-        <!-- Carousel Navigation -->
-        <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
-        <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
-    </div>
+   <!-- Image Carousel -->
+   <div class="carousel-container">
+       <div class="carousel" id="photo-carousel">
+           <!-- Images will be inserted dynamically -->
+       </div>
+       <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
+       <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
+   </div>
 
-    <!-- Lightbox for Enlarged Image -->
-    <div id="lightbox" class="lightbox">
-        <div class="lightbox-header">
-            <a id="download-btn" href="#" download class="download-lightbox">Download</a>
-            <span class="close-lightbox">&times;</span>
-        </div>
-        <img id="lightbox-image" src="" alt="Full Image">
-    </div>
+   <!-- Lightbox for Enlarged Image -->
+   <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+       <div class="lightbox-header">
+           <a id="download-btn" href="#" download class="download-lightbox">Download</a>
+           <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+       </div>
+       <img id="lightbox-image" src="" alt="Full Image" onclick="event.stopPropagation();">
+   </div>
 
-    <!-- JavaScript for PPTs & Field Trip Photos -->
-    <script>
-        async function fetchDownloads() {
-            try {
-                // ✅ Fetch PPTs
-                const pptResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/ppts/");
-                if (!pptResponse.ok) throw new Error("Failed to fetch PPTs");
+   <!-- JavaScript for PPTs & Field Trip Photos -->
+   <script>
+       let photosList = [];
+       let currentIndex = 0;
 
-                const pptData = await pptResponse.json();
-                const pptContainer = document.getElementById("ppts-container");
+       async function fetchDownloads() {
+           try {
+               // ✅ Fetch PPTs
+               const pptResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/ppts/");
+               if (!pptResponse.ok) throw new Error("Failed to fetch PPTs");
 
-                if (!pptData.ppts || pptData.ppts.length === 0) {
-                    pptContainer.innerHTML = "<p>No PPTs available for download.</p>";
-                } else {
-                    pptData.ppts.forEach(ppt => {
-                        const div = document.createElement("div");
-                        div.className = "ppt-item";
+               const pptData = await pptResponse.json();
+               const pptContainer = document.getElementById("ppts-container");
 
-                        const a = document.createElement("a");
-                        a.href = ppt.url;
-                        a.textContent = ppt.name;
-                        a.download = ppt.name;
+               if (!pptData.ppts || pptData.ppts.length === 0) {
+                   pptContainer.innerHTML = "<p>No PPTs available for download.</p>";
+               } else {
+                   pptData.ppts.forEach(ppt => {
+                       const div = document.createElement("div");
+                       div.className = "ppt-item";
 
-                        div.appendChild(a);
-                        pptContainer.appendChild(div);
-                    });
-                }
+                       const a = document.createElement("a");
+                       a.href = ppt.url;
+                       a.textContent = ppt.name;
+                       a.download = ppt.name;
 
-                // ✅ Fetch Field Trip Photos from S3
-                const photoResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/field-trip-photos/");
-                if (!photoResponse.ok) throw new Error("Failed to fetch photos");
+                       div.appendChild(a);
+                       pptContainer.appendChild(div);
+                   });
+               }
 
-                const photoData = await photoResponse.json();
-                const photoContainer = document.getElementById("photo-carousel");
+               // ✅ Fetch Field Trip Photos from S3
+               const photoResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/field-trip-photos/");
+               if (!photoResponse.ok) throw new Error("Failed to fetch photos");
 
-                if (!photoData.photos || photoData.photos.length === 0) {
-                    photoContainer.innerHTML = "<p>No Field Trip Photos available.</p>";
-                } else {
-                    photoData.photos.forEach((photo, index) => {
-                        const img = document.createElement("img");
-                        img.src = photo.url;
-                        img.className = "carousel-image";
-                        img.alt = `Field Trip Photo ${index + 1}`;
-                        img.setAttribute("data-index", index);
+               const photoData = await photoResponse.json();
+               const photoContainer = document.getElementById("photo-carousel");
 
-                        // Open Lightbox When Clicked
-                        img.addEventListener("click", function () {
-                            openLightbox(img.src, index);
-                        });
+               if (!photoData.photos || photoData.photos.length === 0) {
+                   photoContainer.innerHTML = "<p>No Field Trip Photos available.</p>";
+               } else {
+                   photosList = photoData.photos;
+                   photoData.photos.forEach((photo, index) => {
+                       const img = document.createElement("img");
+                       img.src = photo.url;
+                       img.className = "carousel-image";
+                       img.alt = `Field Trip Photo ${index + 1}`;
+                       img.setAttribute("data-index", index);
 
-                        photoContainer.appendChild(img);
-                    });
-                }
-            } catch (error) {
-                console.error("❌ Error:", error);
-                document.getElementById("ppts-container").innerHTML = "<p>Error loading PPTs. Please try again later.</p>";
-                document.getElementById("photo-gallery").innerHTML = "<p>Error loading photos. Please try again later.</p>";
-            }
-        }
+                       // Open Lightbox When Clicked
+                       img.addEventListener("click", function () {
+                           openLightbox(photo.url, index);
+                       });
 
-        // ✅ Lightbox Functionality
-        let currentIndex = 0;
-        let photosList = [];
+                       photoContainer.appendChild(img);
+                   });
+               }
+           } catch (error) {
+               console.error("❌ Error:", error);
+               document.getElementById("ppts-container").innerHTML = "<p>Error loading PPTs. Please try again later.</p>";
+           }
+       }
 
-        function openLightbox(src, index) {
-            currentIndex = index;
-            document.getElementById("lightbox").style.display = "flex";
-            document.getElementById("lightbox-image").src = src;
-            document.getElementById("download-btn").href = src;
-            document.getElementById("download-btn").setAttribute("download", `FieldTripPhoto${index + 1}.jpg`);
-        }
+       // ✅ Lightbox Functionality
+       function openLightbox(src, index) {
+           currentIndex = index;
+           document.getElementById("lightbox").style.display = "flex";
+           document.getElementById("lightbox-image").src = src;
+           document.getElementById("download-btn").href = src;
+           document.getElementById("download-btn").setAttribute("download", `FieldTripPhoto${index + 1}.jpg`);
+       }
 
-        // ✅ Navigate Lightbox Left/Right
-        function changeSlide(direction) {
-            currentIndex += direction;
-            if (currentIndex < 0) {
-                currentIndex = photosList.length - 1;
-            } else if (currentIndex >= photosList.length) {
-                currentIndex = 0;
-            }
-            document.getElementById("lightbox-image").src = photosList[currentIndex].url;
-            document.getElementById("download-btn").href = photosList[currentIndex].url;
-            document.getElementById("download-btn").setAttribute("download", `FieldTripPhoto${currentIndex + 1}.jpg`);
-        }
+       function closeLightbox() {
+           document.getElementById("lightbox").style.display = "none";
+       }
 
-        // ✅ Close Lightbox
-        document.querySelector(".close-lightbox").addEventListener("click", function () {
-            document.getElementById("lightbox").style.display = "none";
-        });
+       // ✅ Navigate Lightbox Left/Right
+       function changeSlide(direction) {
+           currentIndex += direction;
+           if (currentIndex < 0) {
+               currentIndex = photosList.length - 1;
+           } else if (currentIndex >= photosList.length) {
+               currentIndex = 0;
+           }
+           document.getElementById("lightbox-image").src = photosList[currentIndex].url;
+           document.getElementById("download-btn").href = photosList[currentIndex].url;
+           document.getElementById("download-btn").setAttribute("download", `FieldTripPhoto${currentIndex + 1}.jpg`);
+       }
 
-        // ✅ Fetch and Display Files on Page Load
-        fetchDownloads();
-    </script>
+       // ✅ Fetch and Display Files on Page Load
+       fetchDownloads();
+   </script>
 
-    <br><br>
-    <footer>
-        <p>&copy; 2025 IGSTC Conference | All rights reserved.</p>
-    </footer>
+   <br><br>
+   <footer>
+       <p>&copy; 2025 IGSTC Conference | All rights reserved.</p>
+   </footer>
 </body>
 </html>
