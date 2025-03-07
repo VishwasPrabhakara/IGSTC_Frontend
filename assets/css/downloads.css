@@ -118,13 +118,7 @@ h4 {
 /* Move Carousel Navigation Buttons Lower */
 .swiper-button-next,
 .swiper-button-prev {
-    top: 70%; /* Moves buttons further down */
-    transform: translateY(-50%);
-    color: white !important;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 14px;
-    border-radius: 50%;
-    transition: background 0.3s ease;
+    display: none !important;
 }
 
 .swiper-button-next:hover,
