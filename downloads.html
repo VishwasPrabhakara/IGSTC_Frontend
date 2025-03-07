@@ -8,8 +8,6 @@
     <meta name="author" content="IGSTC Conference Team">
     <meta name="keywords" content="IGSTC, Workshop 2025, AI, Sustainability, Networking">
 
-   
-
     <title>PPTs & Photos | IGSTC Bi-Lateral Workshop 2025</title>
 
     <!-- External Styles -->
@@ -44,15 +42,29 @@
     <h2>Download Conference Files</h2>
 
     <!-- PPT Downloads Section -->
-    <br><h2>Download Speaker PPTs</h2>
+    <br><h4>Download Speaker PPTs</h4>
     <div id="ppts-container" class="grid-container">
         <!-- PPT links will be dynamically inserted here -->
     </div>
 
     <!-- Photos Download Section -->
-    <h2>Download Event Photos</h2>
+    <h4>Download Event Photos</h4>
     <br><a target="_blank" href="https://indianinstituteofscience-my.sharepoint.com/:f:/g/personal/rohanhs_iisc_ac_in/EnHKaOLN7NxIgyxKSB0OsIkBOGaq7A-mIKLZZqd7AxdlBw?e=nM7ruo" class="download-btn">Download Photos</a>
 
+    <!-- Field Trip Photos -->
+    <h2>Field Trip Photos</h2>
+    <div id="photo-gallery" class="photo-mosaic">
+        <!-- Photos will be inserted here dynamically -->
+    </div>
+
+    <!-- Lightbox Overlay for Fullscreen Image & Download Button -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-image" src="" alt="Full Image">
+        <a id="download-btn" href="#" download class="download-lightbox">Download</a>
+    </div>
+
+    <!-- JavaScript for PPTs & Field Trip Photos -->
     <script>
         async function fetchDownloads() {
             try {
@@ -65,38 +77,73 @@
 
                 if (!pptData.ppts || pptData.ppts.length === 0) {
                     pptContainer.innerHTML = "<p>No PPTs available for download.</p>";
-                    return;
+                } else {
+                    pptData.ppts.forEach(ppt => {
+                        const div = document.createElement("div");
+                        div.className = "ppt-item";
+
+                        const a = document.createElement("a");
+                        a.href = ppt.url;
+                        a.textContent = ppt.name;
+                        a.download = ppt.name;
+
+                        div.appendChild(a);
+                        pptContainer.appendChild(div);
+                    });
                 }
 
-                // ✅ Create a grid of PPT links (4 per row)
-                pptData.ppts.forEach(ppt => {
+                // ✅ Fetch Field Trip Photos
+                const photoContainer = document.getElementById("photo-gallery");
+                const totalPhotos = 42; 
+                const imagePath = "assets/images/field-trip/";
+
+                for (let i = 1; i <= totalPhotos; i++) {
                     const div = document.createElement("div");
-                    div.className = "ppt-item";
+                    div.className = "photo-item";
 
-                    const a = document.createElement("a");
-                    a.href = ppt.url;
-                    a.textContent = ppt.name;
-                    a.download = ppt.name;
+                    // Image Element
+                    const img = document.createElement("img");
+                    img.src = `${imagePath}photo${i}.jpg`;
+                    img.className = "photo-tile";
+                    img.alt = `Field Trip Photo ${i}`;
 
-                    div.appendChild(a);
-                    pptContainer.appendChild(div);
+                    // Open lightbox when clicked
+                    img.addEventListener("click", function() {
+                        document.getElementById("lightbox").style.display = "flex";
+                        document.getElementById("lightbox-image").src = img.src;
+                        document.getElementById("download-btn").href = img.src; // Set Download Link
+                    });
+
+                    // Download Button
+                    const downloadLink = document.createElement("a");
+                    downloadLink.href = img.src;
+                    downloadLink.download = `FieldTripPhoto${i}.jpg`;
+                    downloadLink.className = "download-btn";
+                    downloadLink.textContent = "Download";
+
+                    div.appendChild(img);
+                    div.appendChild(downloadLink);
+                    photoContainer.appendChild(div);
+                }
+
+                // Close Lightbox
+                document.querySelector(".close-lightbox").addEventListener("click", function() {
+                    document.getElementById("lightbox").style.display = "none";
                 });
 
-                
             } catch (error) {
                 console.error("❌ Error:", error);
                 document.getElementById("ppts-container").innerHTML = "<p>Error loading PPTs. Please try again later.</p>";
+                document.getElementById("photo-gallery").innerHTML = "<p>Error loading photos. Please try again later.</p>";
             }
         }
 
         fetchDownloads();
     </script>
-<br><br><footer>
-    <p>&copy; 2025 IGSTC Conference | All rights reserved.</p>
-</footer>
+
+    <br><br>
+    <footer>
+        <p>&copy; 2025 IGSTC Conference | All rights reserved.</p>
+    </footer>
 </body>
-
-<!-- Footer -->
-
-
 </html>
