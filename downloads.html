@@ -53,23 +53,25 @@
     <h2>Download Event Photos</h2>
     <br><a target="_blank" href="https://indianinstituteofscience-my.sharepoint.com/:f:/g/personal/rohanhs_iisc_ac_in/EnHKaOLN7NxIgyxKSB0OsIkBOGaq7A-mIKLZZqd7AxdlBw?e=nM7ruo" class="download-btn">Download Photos</a>
 
+    <br><h2>Field Trip Photos</h2>
+    <div id="field-trip-photos" class="photo-grid">
+        <!-- Field Trip Photos will be inserted here -->
+    </div>
 
     
     <script>
-        async function fetchDownloads() {
-            try {
-                // ✅ Fetch PPTs
-                const pptResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/ppts/");
-                if (!pptResponse.ok) throw new Error("Failed to fetch PPTs");
+    async function fetchDownloads() {
+        try {
+            // ✅ Fetch PPTs
+            const pptResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/ppts/");
+            if (!pptResponse.ok) throw new Error("Failed to fetch PPTs");
 
-                const pptData = await pptResponse.json();
-                const pptContainer = document.getElementById("ppts-container");
+            const pptData = await pptResponse.json();
+            const pptContainer = document.getElementById("ppts-container");
 
-                if (!pptData.ppts || pptData.ppts.length === 0) {
-                    pptContainer.innerHTML = "<p>No PPTs available for download.</p>";
-                    return;
-                }
-
+            if (!pptData.ppts || pptData.ppts.length === 0) {
+                pptContainer.innerHTML = "<p>No PPTs available for download.</p>";
+            } else {
                 // ✅ Create a grid of PPT links (4 per row)
                 pptData.ppts.forEach(ppt => {
                     const div = document.createElement("div");
@@ -83,15 +85,38 @@
                     div.appendChild(a);
                     pptContainer.appendChild(div);
                 });
-
-                
-            } catch (error) {
-                console.error("❌ Error:", error);
-                document.getElementById("ppts-container").innerHTML = "<p>Error loading PPTs. Please try again later.</p>";
             }
-        }
 
-        fetchDownloads();
+            // ✅ Fetch Field Trip Photos
+            const photoResponse = await fetch("https://igstc-backend.onrender.com/api/downloads/field-trip-photos/");
+            if (!photoResponse.ok) throw new Error("Failed to fetch Field Trip Photos");
+
+            const photoData = await photoResponse.json();
+            const photoContainer = document.getElementById("field-trip-photos");
+
+            if (!photoData.photos || photoData.photos.length === 0) {
+                photoContainer.innerHTML = "<p>No Field Trip Photos available.</p>";
+            } else {
+                // ✅ Display Field Trip Photos as Tiles
+                photoData.photos.forEach(photo => {
+                    const img = document.createElement("img");
+                    img.src = photo.url;
+                    img.className = "photo-tile";
+                    img.alt = "Field Trip Photo";
+                    photoContainer.appendChild(img);
+                });
+            }
+
+        } catch (error) {
+            console.error("❌ Error:", error);
+            document.getElementById("ppts-container").innerHTML = "<p>Error loading PPTs. Please try again later.</p>";
+            document.getElementById("field-trip-photos").innerHTML = "<p>Error loading Field Trip Photos. Please try again later.</p>";
+        }
+    }
+
+    fetchDownloads();
+
+
     </script>
 <br><br><footer>
     <p>&copy; 2025 IGSTC Conference | All rights reserved.</p>
