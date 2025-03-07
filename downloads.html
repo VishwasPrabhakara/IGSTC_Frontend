@@ -51,14 +51,19 @@
     <h4>Download Event Photos</h4>
     <br><a target="_blank" href="https://indianinstituteofscience-my.sharepoint.com/:f:/g/personal/rohanhs_iisc_ac_in/EnHKaOLN7NxIgyxKSB0OsIkBOGaq7A-mIKLZZqd7AxdlBw?e=nM7ruo" class="download-btn">Download Photos</a>
 
-    <!-- Field Trip Photos -->
-    <h2>Field Trip Photos</h2>
-    <div id="photo-gallery" class="photo-mosaic">
-        <!-- Photos will be inserted here dynamically -->
+    <h4>Field Trip Photos</h4>
+
+<!-- Image Carousel -->
+    <div class="carousel-container">
+        <div class="carousel" id="photo-carousel">
+            <!-- Images will be inserted dynamically here -->
+        </div>
+        <!-- Carousel Navigation -->
+        <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
+        <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
     </div>
 
-    <!-- Lightbox Overlay for Fullscreen Image & Download Button -->
-    <!-- Lightbox for Viewing Images -->
+    <!-- Lightbox for Enlarged Image -->
     <div id="lightbox" class="lightbox">
         <div class="lightbox-header">
             <a id="download-btn" href="#" download class="download-lightbox">Download</a>
@@ -66,6 +71,7 @@
         </div>
         <img id="lightbox-image" src="" alt="Full Image">
     </div>
+    
 
 
     <!-- JavaScript for PPTs & Field Trip Photos -->
@@ -96,45 +102,25 @@
                     });
                 }
 
-                // ✅ Fetch Field Trip Photos
-                const photoContainer = document.getElementById("photo-gallery");
-                const totalPhotos = 42; 
+                // ✅ Fetch Field Trip Photos & Create Carousel
+                const photoContainer = document.getElementById("photo-carousel");
+                const totalPhotos = 42;
                 const imagePath = "assets/images/field-trip/";
 
                 for (let i = 1; i <= totalPhotos; i++) {
-                    const div = document.createElement("div");
-                    div.className = "photo-item";
-
-                    // Image Element
                     const img = document.createElement("img");
                     img.src = `${imagePath}photo${i}.jpg`;
-                    img.className = "photo-tile";
+                    img.className = "carousel-image";
                     img.alt = `Field Trip Photo ${i}`;
+                    img.setAttribute("data-index", i - 1); // Store index for navigation
 
-                    // Open lightbox when clicked
-                    img.addEventListener("click", function() {
-                        document.getElementById("lightbox").style.display = "flex";
-                        document.getElementById("lightbox-image").src = img.src;
-                        document.getElementById("download-btn").href = img.src; // Set Download Link
+                    // Open Lightbox When Clicked
+                    img.addEventListener("click", function () {
+                        openLightbox(img.src, i - 1);
                     });
 
-                    // Download Button
-                    const downloadLink = document.createElement("a");
-                    downloadLink.href = img.src;
-                    downloadLink.download = `FieldTripPhoto${i}.jpg`;
-                    downloadLink.className = "download-btn";
-                    downloadLink.textContent = "Download";
-
-                    div.appendChild(img);
-                    div.appendChild(downloadLink);
-                    photoContainer.appendChild(div);
+                    photoContainer.appendChild(img);
                 }
-
-                // Close Lightbox
-                document.querySelector(".close-lightbox").addEventListener("click", function() {
-                    document.getElementById("lightbox").style.display = "none";
-                });
-
             } catch (error) {
                 console.error("❌ Error:", error);
                 document.getElementById("ppts-container").innerHTML = "<p>Error loading PPTs. Please try again later.</p>";
@@ -142,7 +128,40 @@
             }
         }
 
+        // ✅ Lightbox Functionality
+        let currentIndex = 0;
+        const totalPhotos = 42;
+        const imagePath = "assets/images/field-trip/";
+
+        function openLightbox(src, index) {
+            currentIndex = index;
+            document.getElementById("lightbox").style.display = "flex";
+            document.getElementById("lightbox-image").src = src;
+            document.getElementById("download-btn").href = src;
+            document.getElementById("download-btn").setAttribute("download", `FieldTripPhoto${index + 1}.jpg`);
+        }
+
+        // ✅ Navigate Lightbox Left/Right
+        function changeSlide(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = totalPhotos - 1;
+            } else if (currentIndex >= totalPhotos) {
+                currentIndex = 0;
+            }
+            document.getElementById("lightbox-image").src = `${imagePath}photo${currentIndex + 1}.jpg`;
+            document.getElementById("download-btn").href = `${imagePath}photo${currentIndex + 1}.jpg`;
+            document.getElementById("download-btn").setAttribute("download", `FieldTripPhoto${currentIndex + 1}.jpg`);
+        }
+
+        // ✅ Close Lightbox
+        document.querySelector(".close-lightbox").addEventListener("click", function () {
+            document.getElementById("lightbox").style.display = "none";
+        });
+
+        // ✅ Fetch and Display Files on Page Load
         fetchDownloads();
+
     </script>
 
     <br><br>
