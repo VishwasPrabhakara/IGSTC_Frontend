@@ -29,7 +29,7 @@ h4 {
 /* Grid Layout for PPTs */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Always 4 per row */
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     max-width: 1200px;
     margin: 30px auto;
@@ -104,10 +104,15 @@ h4 {
 /* Smooth Scrolling for Carousel */
 .carousel {
     display: flex;
-    gap: 10px;
-    transition: transform 0.4s ease-in-out;
+    transition: transform 0.5s ease-in-out;
     overflow-x: hidden;
     white-space: nowrap;
+    animation: autoScroll 10s linear infinite; /* Auto-scroll effect */
+}
+
+/* Pause auto-scroll on hover */
+.carousel:hover {
+    animation-play-state: paused;
 }
 
 /* Carousel Images */
@@ -224,4 +229,8 @@ h4 {
     justify-content: center;
 }
 
-
+/* Auto-Scroll Keyframes */
+@keyframes autoScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}

@@ -44,9 +44,7 @@
 
    <!-- PPT Downloads Section -->
    <br><h4>Download Speaker PPTs</h4>
-   <div id="ppts-container" class="grid-container">
-       <!-- PPT links will be dynamically inserted here -->
-   </div>
+   <div id="ppts-container" class="grid-container"></div>
 
    <!-- Photos Download Section -->
    <h4>Download Event Photos</h4>
@@ -56,26 +54,22 @@
 
    <!-- Image Carousel -->
    <div class="carousel-container">
-       <div class="carousel" id="photo-carousel">
-           <!-- Images will be inserted dynamically -->
-       </div>
+       <div class="carousel" id="photo-carousel"></div>
        <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
        <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
    </div>
 
    <!-- Lightbox for Enlarged Image -->
-   <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-       <div class="lightbox-header">
-           <a id="download-btn" href="#" download class="download-lightbox">Download</a>
-           <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-       </div>
-       <img id="lightbox-image" src="" alt="Full Image" onclick="event.stopPropagation();">
+   <div id="lightbox" class="lightbox">
+       <span class="close-lightbox" onclick="closeLightbox()">✖</span>
+       <img id="lightbox-image" src="" alt="Full Image">
    </div>
 
-   <!-- JavaScript for PPTs & Field Trip Photos -->
+   <!-- JavaScript -->
    <script>
        let photosList = [];
        let currentIndex = 0;
+       let carouselInterval;
 
        async function fetchDownloads() {
            try {
@@ -128,6 +122,8 @@
 
                        photoContainer.appendChild(img);
                    });
+
+                   startCarousel();
                }
            } catch (error) {
                console.error("❌ Error:", error);
@@ -135,20 +131,34 @@
            }
        }
 
-       // ✅ Lightbox Functionality
+       // ✅ Function to Start Automatic Carousel
+       function startCarousel() {
+           const carousel = document.getElementById("photo-carousel");
+           let index = 0;
+
+           carouselInterval = setInterval(() => {
+               if (carousel.children.length > 1) {
+                   index = (index + 1) % carousel.children.length;
+                   carousel.style.transform = `translateX(-${index * 100}%)`;
+               }
+           }, 3000); // Move every 3 seconds
+       }
+
+       // ✅ Open Lightbox
        function openLightbox(src, index) {
+           clearInterval(carouselInterval); // Stop carousel when lightbox is opened
            currentIndex = index;
            document.getElementById("lightbox").style.display = "flex";
            document.getElementById("lightbox-image").src = src;
-           document.getElementById("download-btn").href = src;
-           document.getElementById("download-btn").setAttribute("download", `FieldTripPhoto${index + 1}.jpg`);
        }
 
+       // ✅ Close Lightbox
        function closeLightbox() {
            document.getElementById("lightbox").style.display = "none";
+           startCarousel(); // Restart carousel after closing lightbox
        }
 
-       // ✅ Navigate Lightbox Left/Right
+       // ✅ Change Slide Manually
        function changeSlide(direction) {
            currentIndex += direction;
            if (currentIndex < 0) {
@@ -157,15 +167,12 @@
                currentIndex = 0;
            }
            document.getElementById("lightbox-image").src = photosList[currentIndex].url;
-           document.getElementById("download-btn").href = photosList[currentIndex].url;
-           document.getElementById("download-btn").setAttribute("download", `FieldTripPhoto${currentIndex + 1}.jpg`);
        }
 
        // ✅ Fetch and Display Files on Page Load
        fetchDownloads();
    </script>
 
-   <br><br>
    <footer>
        <p>&copy; 2025 IGSTC Conference | All rights reserved.</p>
    </footer>
