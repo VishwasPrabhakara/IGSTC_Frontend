@@ -101,13 +101,14 @@ h4 {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Smooth Scrolling for Carousel */
+/* Carousel Track */
 .carousel {
     display: flex;
+    gap: 10px;
     transition: transform 0.5s ease-in-out;
-    overflow-x: hidden;
+    overflow: hidden;
     white-space: nowrap;
-    animation: autoScroll 10s linear infinite; /* Auto-scroll effect */
+    animation: autoScroll 20s linear infinite; /* Auto-scroll effect */
 }
 
 /* Pause auto-scroll on hover */

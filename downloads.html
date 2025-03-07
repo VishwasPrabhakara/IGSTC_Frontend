@@ -61,7 +61,10 @@
 
    <!-- Lightbox for Enlarged Image -->
    <div id="lightbox" class="lightbox">
-       <span class="close-lightbox" onclick="closeLightbox()">✖</span>
+       <div class="lightbox-header">
+           <a id="download-btn" href="#" download class="download-lightbox">Download</a>
+           <span class="close-lightbox" onclick="closeLightbox()">✖</span>
+       </div>
        <img id="lightbox-image" src="" alt="Full Image">
    </div>
 
@@ -150,6 +153,8 @@
            currentIndex = index;
            document.getElementById("lightbox").style.display = "flex";
            document.getElementById("lightbox-image").src = src;
+           document.getElementById("download-btn").href = src;
+           document.getElementById("download-btn").setAttribute("download", `FieldTripPhoto${index + 1}.jpg`);
        }
 
        // ✅ Close Lightbox
